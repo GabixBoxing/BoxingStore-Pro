@@ -1,9 +1,18 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-<title>BoxingStore.pro — Todo para el Boxeo</title>
+<title>BoxingStore.pro — Equipo de Boxeo Profesional | Coach Osvimer Rodriguez</title>
+<meta name="description" content="La tienda de boxeo más completa. Guantes, vendas, nutrición y equipo recomendado por Coach Osvimer Rodriguez — 30 años de experiencia en boxeo de alto rendimiento. Envío desde Amazon.">
+<meta name="keywords" content="guantes boxeo, vendas boxeo, zapatos boxeo, nutrición atleta, equipo boxeo profesional, sparring, boxeo entrenamiento">
+<meta property="og:title" content="BoxingStore.pro — Equipo de Boxeo Profesional">
+<meta property="og:description" content="Recomendado por Coach Osvimer Rodriguez — 30 años formando campeones. Todo el equipo que necesitas para boxear.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://boxingstore.pro">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Store","name":"BoxingStore.pro","description":"Tienda especializada en equipo de boxeo profesional","url":"https://boxingstore.pro","telephone":"+17027234009","founder":{"@type":"Person","name":"Osvimer Rodriguez","jobTitle":"Professional Boxing Coach","knowsAbout":"Boxing, Sports Science, Athletic Training"}}</script>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{--gold:#D4A017;--gold2:#f0c040;--red:#c0392b;--dark:#070d1a;--dark2:#0d1628;--dark3:#111f35;--text:#e8eaf0;--muted:#4a6a8a}
@@ -76,6 +85,24 @@ body{background:var(--dark);color:var(--text);font-family:'Barlow',sans-serif;mi
 .footer-tag{font-size:10px;color:#2a3a5a;margin-top:8px}
 @keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 .fade-up{animation:fadeUp .25s ease forwards}
+.nav-btn{background:none;border:none;color:#4a6a8a;padding:12px 16px;font-size:11px;font-weight:800;cursor:pointer;font-family:'Barlow Condensed';letter-spacing:1px;border-bottom:2px solid transparent;white-space:nowrap;transition:.2s}
+.nav-btn.active,.nav-btn:hover{color:var(--gold);border-bottom-color:var(--gold)}
+.article{max-width:900px;margin:0 auto;padding:20px 16px}
+.article h1{font-family:'Bebas Neue';font-size:36px;color:#fff;letter-spacing:2px;margin-bottom:8px}
+.article h2{font-family:'Bebas Neue';font-size:26px;color:var(--gold);letter-spacing:1px;margin:24px 0 10px}
+.article h3{font-family:'Barlow Condensed';font-size:18px;font-weight:800;color:#fff;margin:16px 0 8px}
+.article p{font-size:14px;color:#c8d0dc;font-family:'Barlow';line-height:1.8;margin-bottom:12px}
+.article strong{color:var(--gold)}
+.article .highlight{background:linear-gradient(135deg,#0a1628,#0f1e35);border-left:4px solid var(--gold);border-radius:0 10px 10px 0;padding:14px 16px;margin:16px 0}
+.article .warning{background:linear-gradient(135deg,#1a0a00,#2a1000);border-left:4px solid var(--red);border-radius:0 10px 10px 0;padding:14px 16px;margin:16px 0}
+.article .science{background:linear-gradient(135deg,#0a1a3a,#0a1628);border:1px solid #1a3a6a;border-radius:10px;padding:14px;margin:16px 0}
+.amz-link{display:inline-flex;align-items:center;gap:6px;background:var(--gold);color:#000;border-radius:8px;padding:8px 14px;font-size:12px;font-weight:900;text-decoration:none;font-family:'Barlow Condensed';letter-spacing:.5px;margin:6px 4px 6px 0}
+.amz-link:hover{background:var(--gold2)}
+.prod-inline{background:var(--dark2);border:1px solid #1a2a4a;border-radius:10px;padding:12px;margin:10px 0;display:flex;align-items:center;gap:12px}
+.prod-inline-info{flex:1}
+.prod-inline-name{font-size:14px;font-weight:700;color:#fff}
+.prod-inline-desc{font-size:12px;color:var(--muted);font-family:'Barlow';margin-top:2px}
+.fade-up{animation:fadeUp .25s ease forwards}
 </style>
 </head>
 <body>
@@ -106,6 +133,15 @@ body{background:var(--dark);color:var(--text);font-family:'Barlow',sans-serif;mi
     <button class="lang-btn" onclick="toggleLang()" id="lang-btn">EN</button>
   </div>
 </header>
+<nav style="background:#0a1220;border-bottom:1px solid #1a2a4a;overflow-x:auto;scrollbar-width:none">
+  <div style="display:flex;max-width:900px;margin:0 auto;padding:0 16px">
+    <button onclick="showSection('tienda')" id="nav-tienda" class="nav-btn active">🛒 TIENDA</button>
+    <button onclick="showSection('guia')" id="nav-guia" class="nav-btn">📖 GUÍA DEL COACH</button>
+    <button onclick="showSection('nutri')" id="nav-nutri" class="nav-btn">🥗 NUTRICIÓN</button>
+    <button onclick="showSection('entreno')" id="nav-entreno" class="nav-btn">💪 ENTRENAMIENTO</button>
+    <button onclick="showSection('contacto')" id="nav-contacto" class="nav-btn">📞 COACH</button>
+  </div>
+</nav>
 
 <div class="hero" id="hero-section">
   <div class="hero-tag" data-es="TODO PARA EL BOXEO" data-en="EVERYTHING FOR BOXING">TODO PARA EL BOXEO</div>
@@ -128,6 +164,7 @@ body{background:var(--dark);color:var(--text);font-family:'Barlow',sans-serif;mi
 <footer class="footer">
   <div class="footer-logo">BOXING STORE .PRO</div>
   <div class="footer-text" data-es="Tu destino completo para el boxeo" data-en="Your complete boxing destination">Tu destino completo para el boxeo</div>
+
   <div class="footer-tag">Amazon Associates · osvimerboxing-20</div>
 </footer>
 
@@ -175,7 +212,7 @@ const P={
       {es:"Pera de Velocidad",en:"Speed Bag",es_d:"Timing y coordinación",en_d:"Timing and coordination",q:"boxing speed bag",p:"$20–$60",g:"all"},
       {es:"Doble Fin (Double End)",en:"Double End Bag",es_d:"Reflejos y precisión",en_d:"Reflexes and precision",q:"double end bag boxing",p:"$15–$50",g:"all"},
       {es:"Maize Bag (Pera Lágrima)",en:"Maize Tear Drop Bag",es_d:"Uppercuts y ganchos",en_d:"Uppercuts and hooks",q:"maize bag teardrop boxing",p:"$25–$70",g:"all"},
-      {es:"Vendas Manos 180\"",en:"180\" Hand Wraps",es_d:"Algodón elástico, lavable",en_d:"Elastic cotton, washable",q:"boxing hand wraps 180 inch",p:"$5–$15",b:{es:"BÁSICO",en:"BASIC"},g:"all"},
+      {es:"Vendas Manos 180 pulgadas",en:"180 pulgadas Hand Wraps",es_d:"Algodón elástico, lavable",en_d:"Elastic cotton, washable",q:"boxing hand wraps 180 inch",p:"$5–$15",b:{es:"BÁSICO",en:"BASIC"},g:"all"},
       {es:"Vendas Rápidas (Inner)",en:"Quick Hand Wraps",es_d:"Con gel, ponerse rápido",en_d:"Gel padded, quick on",q:"boxing inner gloves gel",p:"$12–$30",g:"all"},
       {es:"Soporte de Saco Libre",en:"Freestanding Bag Stand",es_d:"Sin instalación, movible",en_d:"No install, moveable",q:"freestanding heavy bag stand",p:"$80–$200",g:"all"},
       {es:"Soporte de Pera Velocidad",en:"Speed Bag Platform",es_d:"Pared, ajustable",en_d:"Wall mount, adjustable",q:"speed bag platform wall mount",p:"$40–$120",g:"all"},
@@ -332,9 +369,9 @@ const P={
     subs:{es:["Todo","Vendaje","Taping","Bandas","Estiramiento","Herramientas"],
           en:["All","Bandage","Taping","Bands","Stretching","Tools"]},
     items:[
-      {es:"Vendaje Elástico Cohesivo",en:"Cohesive Elastic Bandage",es_d:"3\" auto-adherente",en_d:'3" self-adhesive',q:"cohesive elastic bandage sport",p:"$5–$12",b:{es:"BÁSICO",en:"BASIC"},g:"all"},
+      {es:"Vendaje Elástico Cohesivo",en:"Cohesive Elastic Bandage",es_d:"3 pulgadas auto-adherente",en_d:'3" self-adhesive',q:"cohesive elastic bandage sport",p:"$5–$12",b:{es:"BÁSICO",en:"BASIC"},g:"all"},
       {es:"Kinesio Tape (Taping)",en:"Kinesiology Tape",es_d:"5cm x 5m, varios colores",en_d:"5cm x 5m, various colors",q:"kinesiology tape sport kinesio",p:"$8–$20",g:"all"},
-      {es:"Tape Rígido (Strapping)",en:"Athletic Strapping Tape",es_d:"1.5\" protección articular",en_d:'1.5" joint protection',q:"athletic strapping tape rigid",p:"$8–$18",g:"all"},
+      {es:"Tape Rígido (Strapping)",en:"Athletic Strapping Tape",es_d:"1.5 pulgadas protección articular",en_d:'1.5" joint protection',q:"athletic strapping tape rigid",p:"$8–$18",g:"all"},
       {es:"Banda de Resistencia Terapéutica",en:"Therapy Resistance Band",es_d:"Theraband tipo, 5 niveles",en_d:"Theraband type, 5 levels",q:"therapy resistance band theraband",p:"$8–$20",g:"all"},
       {es:"Set Bandas Resistencia x5",en:"Resistance Band Set x5",es_d:"Loop bands, todos niveles",en_d:"Loop bands, all levels",q:"resistance band loop set",p:"$12–$28",g:"all"},
       {es:"Rodillo de Stick",en:"Stick Roller",es_d:"Masaje piernas y espalda",en_d:"Leg and back massage",q:"muscle stick roller massage",p:"$10–$25",g:"all"},
@@ -376,7 +413,7 @@ const P={
       {es:"Termómetro Digital",en:"Digital Thermometer",es_d:"Rápido, preciso",en_d:"Fast, accurate",q:"digital thermometer fast",p:"$8–$18",g:"all"},
       {es:"Alcohol Isopropílico",en:"Isopropyl Alcohol",es_d:"70%, desinfección",en_d:"70%, disinfection",q:"isopropyl alcohol 70%",p:"$4–$10",g:"all"},
       {es:"Venda de Gasa",en:"Gauze Bandage Roll",es_d:"Curaciones y vendajes",en_d:"Wound care",q:"gauze bandage roll",p:"$5–$12",g:"all"},
-      {es:"Esparadrapo/Cinta Médica",en:"Medical Tape",es_d:"1\" x 10 yardas",en_d:'1" x 10 yards',q:"medical tape adhesive",p:"$4–$10",g:"all"},
+      {es:"Esparadrapo/Cinta Médica",en:"Medical Tape",es_d:"1 pulgada x 10 yardas",en_d:'1" x 10 yards',q:"medical tape adhesive",p:"$4–$10",g:"all"},
       {es:"Tijeras Médicas",en:"Medical Scissors",es_d:"Para vendajes y taping",en_d:"For bandages and taping",q:"medical scissors bandage",p:"$5–$12",g:"all"},
       {es:"Antiácido Estomago",en:"Antacid Stomach",es_d:"Pre/post competencia",en_d:"Pre/post competition",q:"antacid tums sport",p:"$5–$10",g:"all"},
       {es:"Suero Oral Electrolitos",en:"Oral Rehydration Serum",es_d:"Deshidratación severa",en_d:"Severe dehydration",q:"oral rehydration electrolytes sport",p:"$8–$15",g:"all"},
@@ -392,12 +429,12 @@ const P={
       {es:"Barra Olímpica 7ft",en:"Olympic Bar 7ft",es_d:"45 lbs, cromada",en_d:"45 lbs, chrome",q:"olympic bar 7ft barbell",p:"$80–$200",g:"all"},
       {es:"Barra de Dominadas",en:"Pull-Up Bar",es_d:"Puerta, sin tornillos",en_d:"Door, no screws",q:"pull up bar door frame",p:"$20–$50",g:"all"},
       {es:"Discos de Peso Caucho",en:"Rubber Weight Plates",es_d:"Par 10 lbs o 25 lbs",en_d:"Pair 10 lbs or 25 lbs",q:"rubber weight plates pair",p:"$20–$60",g:"all"},
-      {es:"Cuerda de Batalla",en:"Battle Rope",es_d:"1.5\" x 30ft, fuerza",en_d:'1.5" x 30ft, strength',q:"battle rope exercise",p:"$40–$100",g:"all"},
+      {es:"Cuerda de Batalla",en:"Battle Rope",es_d:"1.5 pulgadas x 30ft, fuerza",en_d:'1.5" x 30ft, strength',q:"battle rope exercise",p:"$40–$100",g:"all"},
       {es:"Mazo de Entrenamiento",en:"Training Sledgehammer",es_d:"10-12 lbs, fuerza funcional",en_d:"10-12 lbs, functional strength",q:"training sledgehammer fitness",p:"$25–$60",g:"all"},
       {es:"Caminadora Eléctrica",en:"Electric Treadmill",es_d:"Hogar, plegable",en_d:"Home, foldable",q:"electric treadmill home foldable",p:"$200–$600",b:{es:"GRAN INVERSIÓN",en:"GREAT INVESTMENT"},g:"all"},
       {es:"Bicicleta Estática",en:"Stationary Bike",es_d:"Resistencia ajustable",en_d:"Adjustable resistance",q:"stationary bike indoor cycling",p:"$150–$400",g:"all"},
       {es:"Cuerda de Boxeo",en:"Jump Rope Speed",es_d:"Aluminio, velocidad",en_d:"Aluminum, speed",q:"jump rope speed aluminum boxing",p:"$10–$30",g:"all"},
-      {es:"Mat de Ejercicio",en:"Exercise Mat",es_d:"1\" grosor, antideslizante",en_d:'1" thick, non-slip',q:"exercise mat yoga thick",p:"$20–$50",g:"all"},
+      {es:"Mat de Ejercicio",en:"Exercise Mat",es_d:"1 pulgada grosor, antideslizante",en_d:'1" thick, non-slip',q:"exercise mat yoga thick",p:"$20–$50",g:"all"},
     ]
   },
   casa:{
@@ -511,7 +548,7 @@ const COACH_RECS=[
   {es:"Guantes Everlast Pro Style",en:"Everlast Pro Style Gloves",q:"everlast pro style training gloves",es_why:"El guante que uso con todos mis atletas. Duradero y protección real.",en_why:"The glove I use with all my athletes. Durable with real protection."},
   {es:"Proteína Gold Standard Whey",en:"Gold Standard Whey Protein",q:"optimum nutrition gold standard whey",es_why:"La mejor relación calidad-precio del mercado para atletas de alto rendimiento.",en_why:"The best quality-price ratio for high performance athletes."},
   {es:"Cuerda de Velocidad",en:"Speed Jump Rope",q:"speed jump rope boxing adjustable",es_why:"Fundamental. 10 minutos diarios de cuerda cambian tu cardio completamente.",en_why:"Fundamental. 10 daily minutes of rope completely changes your cardio."},
-  {es:"Vendas de Manos 180\"",en:"180\" Hand Wraps",q:"boxing hand wraps 180 inch cotton",es_why:"Protección básica antes de guantes. NUNCA entrenes sin ellas.",en_why:"Basic protection before gloves. NEVER train without them."},
+  {es:"Vendas de Manos 180 pulgadas",en:"180 pulgadas Hand Wraps",q:"boxing hand wraps 180 inch cotton",es_why:"Protección básica antes de guantes. NUNCA entrenes sin ellas.",en_why:"Basic protection before gloves. NEVER train without them."},
   {es:"Timer de Intervalos Digital",en:"Digital Interval Timer",q:"boxing round interval timer",es_why:"Para entrenar en casa con rounds reales. Cambia todo el entrenamiento.",en_why:"To train at home with real rounds. Changes the entire training."},
   {es:"Kit Principiante Completo",en:"Complete Beginner Kit",q:"boxing beginner complete kit",es_why:"Para quien empieza: todo lo que necesita en una sola compra.",en_why:"For beginners: everything they need in one purchase."},
   {es:"Rodillera de Compresión",en:"Compression Knee Sleeve",q:"knee sleeve compression 7mm sport",es_why:"Previene lesiones. Úsalas desde el primer día de entrenamiento.",en_why:"Prevents injuries. Use them from your very first training day."},
@@ -575,6 +612,286 @@ function renderSearch(){
 }
 
 render();
-</script>
-</body>
-</html>
+
+// ── SECTION NAVIGATION ───────────────────────────────────────
+function showSection(sec){
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  var btn = document.getElementById('nav-'+sec);
+  if(btn) btn.classList.add('active');
+
+  var hero = document.getElementById('hero-section');
+
+  if(sec==='tienda'){
+    if(hero) hero.style.display='';
+    showHome();
+  } else {
+    if(hero) hero.style.display='none';
+    activeCat=null; searchMode=false;
+    var mc = document.getElementById('main-content');
+    if(sec==='guia') mc.innerHTML = renderGuia();
+    else if(sec==='nutri') mc.innerHTML = renderNutri();
+    else if(sec==='entreno') mc.innerHTML = renderEntreno();
+    else if(sec==='contacto') mc.innerHTML = renderContacto();
+    window.scrollTo(0,0);
+  }
+}
+
+// ── GUÍA DEL COACH ───────────────────────────────────────────
+function renderGuia(){
+  var TAG = "osvimerboxing-20";
+  function amzL(q){ return "https://www.amazon.com/s?k="+encodeURIComponent(q)+"&tag="+TAG; }
+
+  return `<div class="article">
+    <div style="font-size:11px;color:var(--gold);letter-spacing:3px;font-family:Barlow Condensed;font-weight:700;margin-bottom:8px">📖 ${L("GUÍA DEL COACH","COACH'S GUIDE")}</div>
+    <h1>${L("Conocimiento Real de 30 Años en el Ring","Real Knowledge from 30 Years in the Ring")}</h1>
+    <p>${L("Esta guía está escrita desde la experiencia directa entrenando atletas amateurs y de alto rendimiento bajo la Metodología Sagarra — el sistema de boxeo cubano que ha producido más campeones olímpicos per cápita que cualquier otro en la historia. No es teoría de libro. Es lo que funciona en el ring.","This guide is written from direct experience training amateur and high performance athletes under the Sagarra Methodology — the Cuban boxing system that has produced more Olympic champions per capita than any other in history. This is not book theory. This is what works in the ring.")}</p>
+
+    <!-- VENDAS -->
+    <h2>🩹 ${L("VENDAS DE MANOS — La Ciencia Detrás del Protector Más Subestimado","HAND WRAPS — The Science Behind the Most Underestimated Protector")}</h2>
+
+    <div class="science">
+      <h3>${L("¿Por qué el carpiano es la lesión más frecuente en boxeadores?","Why is the carpus the most frequent injury in boxers?")}</h3>
+      <p>${L("El complejo carpometacarpiano está formado por 8 huesos pequeños — el escafoides, semilunar, piramidal, pisiforme, trapecio, trapezoide, grande y ganchoso. Cuando un boxeador lanza un jab o un recto derecho sin vendaje adecuado, la fuerza de impacto se concentra en el hueso escafoides. Esta estructura ósea no tiene irrigación directa — una fractura del escafoides puede tardar meses en detectarse y años en sanar. En mi experiencia de 30 años, el 68% de las lesiones de mano que he visto hubieran sido prevenibles con el vendaje correcto.","The carpometacarpal complex is formed by 8 small bones — the scaphoid, lunate, triquetrum, pisiform, trapezium, trapezoid, capitate and hamate. When a boxer throws a jab or straight right without proper wrapping, the impact force concentrates on the scaphoid bone. This bony structure has no direct blood supply — a scaphoid fracture can take months to detect and years to heal. In my 30 years of experience, 68% of hand injuries I've seen would have been preventable with correct wrapping.")}</p>
+    </div>
+
+    <h3>${L("La Medida Exacta: Por Qué 180 Pulgadas y No Menos","The Exact Size: Why 180 Inches and Not Less")}</h3>
+    <p>${L("Las vendas de 120 pulgadas no son suficientes. Punto. Para dar las 4 vueltas mínimas alrededor del metacarpo y la muñeca que se necesitan para una protección real, se requieren mínimo 180 pulgadas. Con 180 pulgadas puedes dar: 4 vueltas completas en la muñeca, 3 vueltas entre los dedos, 2 vueltas finales de refuerzo. Eso es protección real. Con 120 pulgadas solo puedes dar 2 vueltas — proteges nada.","120-inch wraps are not enough. Period. To give the minimum 4 turns around the metacarpus and wrist needed for real protection, you need at least 180 inches. With 180 inches you can give: 4 complete turns on the wrist, 3 turns between the fingers, 2 final reinforcement turns. That is real protection. With 120 inches you can only give 2 turns — you protect nothing.")}</p>
+
+    <div class="highlight">
+      <strong>${L("Regla del Coach Osvimer:","Coach Osvimer's Rule:")}</strong>
+      <p style="margin:6px 0 0">${L("Mínimo 4 vueltas en la muñeca. Mínimo 3 vueltas entre los dedos. Si tu venda no llega para eso — cómprala más larga. Un guante sin venda es como un casco sin correa.","Minimum 4 turns on the wrist. Minimum 3 turns between the fingers. If your wrap doesn't reach that — buy a longer one. A glove without a wrap is like a helmet without a strap.")}</p>
+    </div>
+
+    <h3>${L("Tipos de Venda: Cuál Usar y Cuándo","Types of Wraps: Which to Use and When")}</h3>
+    <p><strong>${L("Algodón elástico (recomendado):","Elastic cotton (recommended):")}</strong> ${L("Se adapta a la forma de la mano, da compresión uniforme, se lava fácil. Para uso diario, entrenamiento y competencia.","Adapts to hand shape, gives uniform compression, washes easily. For daily use, training and competition.")}</p>
+    <p><strong>${L("Algodón rígido:","Rigid cotton:")}</strong> ${L("Más fácil de manejar para principiantes. Menos protección. Bueno para aprender la técnica de vendaje.","Easier to handle for beginners. Less protection. Good for learning wrapping technique.")}</p>
+    <p><strong>${L("Gel interior (inner gloves):","Gel inner gloves:")}</strong> ${L("Para entrenar rápido. No reemplazan la venda real para sparring o competencia.","For quick training. Do not replace real wraps for sparring or competition.")}</p>
+
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin:16px 0">
+      <a class="amz-link" href="${amzL('boxing hand wraps 180 inch elastic cotton')}" target="_blank">🛒 ${L("Vendas 180 pulgadas Elásticas","180 pulgadas Elastic Wraps")} ↗</a>
+      <a class="amz-link" href="${amzL('boxing inner gloves gel padded')}" target="_blank">🛒 ${L("Inner Gloves Gel","Gel Inner Gloves")} ↗</a>
+    </div>
+
+    <!-- GUANTES -->
+    <h2>🥊 ${L("GUANTES — Guía Completa por Uso y Material","GLOVES — Complete Guide by Use and Material")}</h2>
+
+    <p>${L("No todos los guantes son iguales y usar el guante incorrecto para el entrenamiento equivocado es uno de los errores más costosos que cometen los atletas. Aquí está la guía completa basada en 30 años de experiencia.","Not all gloves are equal and using the wrong glove for the wrong training is one of the most costly mistakes athletes make. Here is the complete guide based on 30 years of experience.")}</p>
+
+    <h3>${L("Materiales: Qué Significa Cada Uno","Materials: What Each One Means")}</h3>
+    <p><strong>${L("Cuero genuino:","Genuine leather:")}</strong> ${L("El mejor material. Dura 3-5 años con mantenimiento. Mejor absorción de impacto. Más caro pero más económico a largo plazo. Recomendado para sparring y competencia.","The best material. Lasts 3-5 years with maintenance. Better impact absorption. More expensive but more economical long term. Recommended for sparring and competition.")}</p>
+    <p><strong>${L("Cuero sintético/PU:","Synthetic/PU leather:")}</strong> ${L("Buena opción para entrenamiento diario en saco. Dura 1-2 años. Suficiente para atletas que empiezan o entrenan sin sparring frecuente.","Good option for daily bag training. Lasts 1-2 years. Sufficient for athletes who are starting or training without frequent sparring.")}</p>
+    <p><strong>${L("Vinilo:","Vinyl:")}</strong> ${L("El más económico. Bueno para principiantes absolutos. No recomendado para sparring — no protege suficiente las manos del rival.","The most economical. Good for absolute beginners. Not recommended for sparring — does not protect the opponent's hands sufficiently.")}</p>
+
+    <h3>${L("Por Uso: El Guante Correcto para Cada Cosa","By Use: The Right Glove for Each Thing")}</h3>
+
+    <div class="highlight">
+      <strong>🥊 ${L("PARA SACO Y PERA (12-14 oz):","FOR BAG AND SPEED BAG (12-14 oz):")}</strong>
+      <p style="margin:6px 0 0">${L("Guante más rígido con acolchado frontal concentrado. El objetivo es sentir el impacto del golpe y trabajar la técnica. No necesitas tanto acolchado porque no hay un rival al frente. Marcas recomendadas: Everlast Pro Style, Title Classic, Ringside IMF Tech.","Stiffer glove with concentrated front padding. The goal is to feel the impact of the punch and work technique. You don't need as much padding because there's no opponent in front. Recommended brands: Everlast Pro Style, Title Classic, Ringside IMF Tech.")}</p>
+    </div>
+
+    <div class="highlight">
+      <strong>🥊 ${L("PARA SPARRING (14-16 oz):","FOR SPARRING (14-16 oz):")}</strong>
+      <p style="margin:6px 0 0">${L("Aquí el acolchado es para proteger AL RIVAL, no solo a ti. Máximo volumen de espuma, distribución uniforme. El guante Title Gold es mi recomendación especial para personas técnicas y rápidas — su diseño permite velocidad sin sacrificar protección. Para pegadores más fuertes: Cleto Reyes, Winning. Son los mejores guantes de sparring del mundo pero también los más costosos.","Here the padding is to protect YOUR OPPONENT, not just you. Maximum foam volume, uniform distribution. The Title Gold glove is my special recommendation for technical and fast fighters — its design allows speed without sacrificing protection. For stronger punchers: Cleto Reyes, Winning. These are the best sparring gloves in the world but also the most expensive.")}</p>
+    </div>
+
+    <div class="highlight">
+      <strong>🥊 ${L("PARA COMPETENCIA (10 oz amateur):","FOR COMPETITION (10 oz amateur):")}</strong>
+      <p style="margin:6px 0 0">${L("Guante reglamentario según la federación. En USA Boxing: 10 oz para todas las categorías. Acolchado distribuido para transmitir el golpe limpio al sistema de puntuación. El guante de competencia no es para entrenar — se estrena en la pelea.","Regulation glove according to federation. In USA Boxing: 10 oz for all categories. Distributed padding to transmit the clean punch to the scoring system. The competition glove is not for training — it is used for the first time in the fight.")}</p>
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin:16px 0">
+      <a class="amz-link" href="${amzL('Title Gold boxing gloves sparring')}" target="_blank">🛒 Title Gold ${L("Sparring","Sparring")} ↗</a>
+      <a class="amz-link" href="${amzL('Cleto Reyes boxing gloves')}" target="_blank">🛒 Cleto Reyes ↗</a>
+      <a class="amz-link" href="${amzL('Everlast Pro Style training gloves')}" target="_blank">🛒 Everlast Pro Style ↗</a>
+      <a class="amz-link" href="${amzL('boxing competition gloves 10oz')}" target="_blank">🛒 ${L("Guantes Competencia 10oz","Competition Gloves 10oz")} ↗</a>
+    </div>
+
+    <!-- ZAPATOS -->
+    <h2>👟 ${L("ZAPATOS — La Diferencia que Nadie Explica","SHOES — The Difference Nobody Explains")}</h2>
+
+    <p>${L("En 30 años he visto atletas talentosos perder peleas por el zapato equivocado. No es exageración. La cadena cinética del golpe empieza en el pie. Si el pie no está conectado al piso correctamente, el poder se pierde antes de salir de la mano.","In 30 years I've seen talented athletes lose fights because of the wrong shoe. This is not an exaggeration. The kinetic chain of the punch starts in the foot. If the foot is not correctly connected to the floor, the power is lost before it leaves the hand.")}</p>
+
+    <div class="science">
+      <h3>${L("La Biomecánica del Pie en el Ring","The Biomechanics of the Foot in the Ring")}</h3>
+      <p>${L("El metatarso — los 5 huesos largos del pie — necesita contacto completo con el piso para transferir la fuerza de rotación de cadera al torso y al brazo. Un zapato con suela gruesa o con soporte lateral elevado crea un punto de palanca que interrumpe esa transferencia. El resultado: el atleta resbala al girar, pierde equilibrio al retroceder y tarda más en regresar a posición de guardia. Los zapatos con 'bultos' laterales además aumentan el riesgo de esguince de tobillo en los movimientos laterales rápidos del ring.","The metatarsus — the 5 long bones of the foot — needs full contact with the floor to transfer the rotational force from the hip to the torso and arm. A shoe with a thick sole or elevated lateral support creates a lever point that interrupts that transfer. The result: the athlete slips when turning, loses balance when retreating and takes longer to return to guard position. Shoes with lateral 'bumps' also increase the risk of ankle sprain in quick lateral ring movements.")}</p>
+    </div>
+
+    <div class="highlight">
+      <strong>🏆 ${L("PARA COMPETENCIA — Suela Plana:","FOR COMPETITION — Flat Sole:")}</strong>
+      <p style="margin:6px 0 0">${L("Mi recomendación con 30 años de experiencia: cualquier bota de boxeo con suela completamente plana y delgada. Las Adidas Box Hog son el ejemplo perfecto — la suela es prácticamente una hoja delgada que pega el pie al piso al 100%. Esto permite girar el pie correctamente en cada golpe, desplazarse sin riesgo de viro y sentir el ring como una extensión del cuerpo. No tiene que ser Adidas — cualquier marca que cumpla este criterio de suela plana sirve.","My recommendation with 30 years of experience: any boxing boot with a completely flat and thin sole. The Adidas Box Hog are the perfect example — the sole is practically a thin sheet that sticks the foot to the floor 100%. This allows correctly rotating the foot on each punch, moving without risk of twisting and feeling the ring as an extension of the body. It doesn't have to be Adidas — any brand that meets this flat sole criterion works.")}</p>
+    </div>
+
+    <div class="highlight">
+      <strong>💪 ${L("PARA ENTRENAMIENTO DIARIO:","FOR DAILY TRAINING:")}</strong>
+      <p style="margin:6px 0 0">${L("Para el entrenamiento diario — correr, footwork, saco, circuito — un tenis de entrenamiento más robusto cumple mejor. Las Nike Metcon, Free TR y similares tienen una suela con más agarre para superficies variables y más amortiguación para el volumen de trabajo. Son más durables para el uso intenso de 5-6 días por semana. Mi recomendación: usa botas planas en el ring y tenis de entrenamiento para el trabajo físico fuera del ring.","For daily training — running, footwork, bag, circuit — a more robust training shoe performs better. The Nike Metcon, Free TR and similar have a sole with more grip for variable surfaces and more cushioning for work volume. They are more durable for intense 5-6 day per week use. My recommendation: use flat boots in the ring and training shoes for physical work outside the ring.")}</p>
+    </div>
+
+    <div class="warning">
+      <strong>⚠️ ${L("LO QUE NUNCA DEBES USAR EN EL RING:","WHAT YOU SHOULD NEVER USE IN THE RING:")}</strong>
+      <p style="margin:6px 0 0">${L("Zapatos de running convencionales con suela tipo cuna o con soporte lateral pronunciado. Esos zapatos están diseñados para ir hacia adelante en línea recta — no para los movimientos multidireccionales del ring. El soporte lateral elevado literalmente vira el pie cuando el atleta trata de girar. He visto esguinces de tobillo graves en sparring por esta razón.","Conventional running shoes with wedge soles or pronounced lateral support. Those shoes are designed to go forward in a straight line — not for the multidirectional movements of the ring. The elevated lateral support literally turns the foot when the athlete tries to rotate. I have seen serious ankle sprains in sparring for this reason.")}</p>
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin:16px 0">
+      <a class="amz-link" href="${amzL('Adidas Box Hog boxing shoes flat sole')}" target="_blank">🛒 Adidas Box Hog ↗</a>
+      <a class="amz-link" href="${amzL('boxing boots flat sole competition')}" target="_blank">🛒 ${L("Botas Planas Competencia","Flat Competition Boots")} ↗</a>
+      <a class="amz-link" href="${amzL('Nike Metcon training shoes')}" target="_blank">🛒 Nike Metcon ${L("Entrenamiento","Training")} ↗</a>
+    </div>
+
+    <!-- MITTS -->
+    <h2>🧤 ${L("MITTS / MASCOTAS — Cuándo y Cuáles Usar","MITTS — When and Which to Use")}</h2>
+
+    <div class="warning">
+      <strong>⚠️ ${L("ERROR CRÍTICO DE COACHES PRINCIPIANTES:","CRITICAL BEGINNER COACH ERROR:")}</strong>
+      <p style="margin:6px 0 0">${L("Dar mitts a un atleta que aún no sabe tirar los golpes correctamente. Si el atleta no tiene la mecánica del golpe aprendida, va a impactar el mitt en ángulos incorrectos — y quien recibe la lesión es el coach, no el atleta. Primero técnica, luego mitts. Sin excepción.","Giving mitts to an athlete who doesn't yet know how to throw punches correctly. If the athlete doesn't have the punch mechanics learned, they will impact the mitt at incorrect angles — and the one who receives the injury is the coach, not the athlete. Technique first, then mitts. No exceptions.")}</p>
+    </div>
+
+    <h3>${L("Mitts Gruesos (Espumosos) — Para Principiantes","Thick Mitts (Foam) — For Beginners")}</h3>
+    <p>${L("Los mitts con mucho volumen de espuma son buenos para los primeros meses de entrenamiento cuando el atleta está aprendiendo la mecánica básica. La espuma absorbe los impactos mal dirigidos y protege las manos del coach. Pero tienen una desventaja: no enseñan precisión. El atleta puede golpear en cualquier parte del mitt y 'conectar'. Eso no es lo que pasa en el ring.","Mitts with high foam volume are good for the first months of training when the athlete is learning basic mechanics. The foam absorbs misdirected impacts and protects the coach's hands. But they have a disadvantage: they don't teach precision. The athlete can hit anywhere on the mitt and 'connect'. That is not what happens in the ring.")}</p>
+
+    <h3>${L("Mitts Pequeños con Círculo Central — Para Atletas Avanzados","Small Mitts with Center Circle — For Advanced Athletes")}</h3>
+    <p>${L("Estos son los que yo recomiendo una vez que el atleta ya tiene la mecánica del golpe. El círculo en el centro obliga al atleta a encontrar el blanco exacto con cada golpe. Si no conecta en el círculo, siente la diferencia. Esto desarrolla la precisión que diferencia a un boxeador técnico de uno que solo pega fuerte. No tiene que ser la marca Rival — puede ser cualquier mitt pequeño con target central. El principio es lo importante: blanco pequeño, precisión obligatoria.","These are the ones I recommend once the athlete already has punch mechanics. The circle in the center forces the athlete to find the exact target with every punch. If they don't connect on the circle, they feel the difference. This develops the precision that differentiates a technical boxer from one who just punches hard. It doesn't have to be the Rival brand — it can be any small mitt with a central target. The principle is what's important: small target, mandatory precision.")}</p>
+
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin:16px 0">
+      <a class="amz-link" href="${amzL('boxing focus mitts foam beginner')}" target="_blank">🛒 ${L("Mitts Principiante","Beginner Mitts")} ↗</a>
+      <a class="amz-link" href="${amzL('boxing mitts small target precision')}" target="_blank">🛒 ${L("Mitts Precisión","Precision Mitts")} ↗</a>
+    </div>
+
+    <!-- GUÍA COACHES -->
+    <h2>📋 ${L("GUÍA PARA COACHES — El Error que Arruina Atletas","COACH'S GUIDE — The Mistake That Ruins Athletes")}</h2>
+
+    <div class="warning">
+      <strong>⚠️ ${L("EL ERROR MÁS COSTOSO EN EL BOXEO AMATEUR:","THE MOST COSTLY MISTAKE IN AMATEUR BOXING:")}</strong>
+      <p style="margin:6px 0 0">${L("Meter a un atleta a sparring fuerte antes de que esté listo. Este error no se corrige. El sistema nervioso del atleta aprende a sobrevivir en vez de boxear — y eso se queda para toda la vida.","Putting an athlete into hard sparring before they are ready. This mistake is not corrected. The athlete's nervous system learns to survive instead of box — and that stays for life.")}</p>
+    </div>
+
+    <h3>${L("El Sparring Acondicionado — Por Qué Es Obligatorio","Conditioned Sparring — Why It Is Mandatory")}</h3>
+    <p>${L("El sparring acondicionado significa empezar con velocidad y potencia reducidas — 30-40% de intensidad — donde el objetivo es aprender los movimientos, no resistir castigo. En este tipo de sparring el coach está dentro o al lado del ring, dirigiendo cada intercambio. 'Ahora tira el jab. Ahora mueve la cabeza. Ahora sale por la izquierda.' El atleta aprende con el cerebro, no con el instinto de supervivencia.","Conditioned sparring means starting with reduced speed and power — 30-40% intensity — where the objective is to learn the movements, not resist punishment. In this type of sparring the coach is inside or beside the ring, directing each exchange. 'Now throw the jab. Now move the head. Now exit to the left.' The athlete learns with the brain, not the survival instinct.")}</p>
+
+    <div class="science">
+      <h3>${L("La Ciencia Detrás del Error","The Science Behind the Mistake")}</h3>
+      <p>${L("Cuando un atleta recibe golpes fuertes que no puede manejar técnicamente, el sistema nervioso central activa el mecanismo de protección: baja los brazos para proteger el cuerpo, cierra los ojos al impacto, encorva la espalda. Estos patrones de movimiento se vuelven automáticos — se mielinizan en el cerebro. Una vez mielinizados, son extraordinariamente difíciles de corregir. Por eso vemos boxeadores adultos que llevan 10 años entrenando y todavía bajan la mano, no rotan el tronco en el recto derecho y no se mueven bien lateralmente. No es falta de talento — es un patrón neurológico instalado por sparring prematuro.","When an athlete receives strong punches they cannot handle technically, the central nervous system activates the protection mechanism: lowers the arms to protect the body, closes the eyes on impact, rounds the back. These movement patterns become automatic — they myelinate in the brain. Once myelinated, they are extraordinarily difficult to correct. That is why we see adult boxers who have been training for 10 years and still drop their hand, don't rotate their torso on the straight right and don't move well laterally. It's not lack of talent — it's a neurological pattern installed by premature sparring.")}</p>
+    </div>
+
+    <div class="highlight">
+      <p><strong>${L("Regla del Coach Osvimer:","Coach Osvimer's Rule:")}</strong> ${L("Es preferible que el atleta aprenda perdiendo técnicamente en el gym durante 6 meses, que aprenda a sobrevivir en 2 semanas. El que aprende a sobrevivir lleva esa limitación toda su carrera deportiva. El que aprende técnica tiene herramientas para toda la vida.","It is better for the athlete to learn by losing technically in the gym for 6 months, than to learn to survive in 2 weeks. The one who learns to survive carries that limitation their entire sports career. The one who learns technique has tools for life.")}</p>
+    </div>
+
+  </div>`;
+}
+
+// ── NUTRICIÓN ─────────────────────────────────────────────────
+function renderNutri(){
+  var TAG = "osvimerboxing-20";
+  function amzL(q){ return "https://www.amazon.com/s?k="+encodeURIComponent(q)+"&tag="+TAG; }
+
+  return `<div class="article">
+    <div style="font-size:11px;color:var(--gold);letter-spacing:3px;font-family:Barlow Condensed;font-weight:700;margin-bottom:8px">🥗 ${L("NUTRICIÓN DEL ATLETA","ATHLETE NUTRITION")}</div>
+    <h1>${L("Plan Nutricional Diario para Boxeadores","Daily Nutrition Plan for Boxers")}</h1>
+    <p>${L("La nutrición es el tercer entrenamiento. El primero es el físico, el segundo es el mental y el tercero es la mesa. Un atleta que come mal está entrenando con el freno puesto. Este plan está basado en la experiencia directa preparando atletas para competencia nacional e internacional.","Nutrition is the third training. The first is physical, the second is mental and the third is the table. An athlete who eats poorly is training with the brakes on. This plan is based on direct experience preparing athletes for national and international competition.")}</p>
+
+    <h2>${L("PLAN DIARIO — FASE BASE (2500-2700 kcal)","DAILY PLAN — BASE PHASE (2500-2700 kcal)")}</h2>
+
+    <div class="prod-inline">
+      <div style="font-size:28px">☀️</div>
+      <div class="prod-inline-info">
+        <div class="prod-inline-name">${L("DESAYUNO — 7:00 AM","BREAKFAST — 7:00 AM")}</div>
+        <div class="prod-inline-desc">${L("3 huevos revueltos + 1 taza avena + 1 banana + jugo naranja natural. 550-600 kcal · 32g proteína · 65g carbohidratos","3 scrambled eggs + 1 cup oatmeal + 1 banana + natural OJ. 550-600 kcal · 32g protein · 65g carbs")}</div>
+      </div>
+    </div>
+
+    <div class="prod-inline">
+      <div style="font-size:28px">🌤️</div>
+      <div class="prod-inline-info">
+        <div class="prod-inline-name">${L("MERIENDA — 10:00 AM","SNACK — 10:00 AM")}</div>
+        <div class="prod-inline-desc">${L("1 manzana + 30g almendras + 1 yogur griego. 280 kcal · 15g proteína","1 apple + 30g almonds + 1 greek yogurt. 280 kcal · 15g protein")}</div>
+      </div>
+    </div>
+
+    <div class="prod-inline">
+      <div style="font-size:28px">🍽️</div>
+      <div class="prod-inline-info">
+        <div class="prod-inline-name">${L("ALMUERZO — 1:00 PM","LUNCH — 1:00 PM")}</div>
+        <div class="prod-inline-desc">${L("180g pollo a la plancha + 1 taza arroz integral + ensalada. 620 kcal · 48g proteína · 72g carbohidratos","180g grilled chicken + 1 cup brown rice + salad. 620 kcal · 48g protein · 72g carbs")}</div>
+      </div>
+    </div>
+
+    <div class="prod-inline">
+      <div style="font-size:28px">⚡</div>
+      <div class="prod-inline-info">
+        <div class="prod-inline-name">${L("PRE-ENTRENO — 2 hrs antes","PRE-WORKOUT — 2 hrs before")}</div>
+        <div class="prod-inline-desc">${L("1 banana + 30g avena con agua. 280 kcal · 58g carbohidratos. Sin grasa — la grasa ralentiza la digestión","1 banana + 30g oats with water. 280 kcal · 58g carbs. No fat — fat slows digestion")}</div>
+      </div>
+    </div>
+
+    <div class="prod-inline">
+      <div style="font-size:28px">💪</div>
+      <div class="prod-inline-info">
+        <div class="prod-inline-name">${L("POST-ENTRENO — 30 min después","POST-WORKOUT — 30 min after")}</div>
+        <div class="prod-inline-desc">${L("30g proteína whey + banana + 250ml leche. 380 kcal · 38g proteína. Ventana anabólica: primeros 30 minutos son críticos","30g whey protein + banana + 250ml milk. 380 kcal · 38g protein. Anabolic window: first 30 minutes are critical")}</div>
+      </div>
+    </div>
+
+    <div class="prod-inline">
+      <div style="font-size:28px">🌙</div>
+      <div class="prod-inline-info">
+        <div class="prod-inline-name">${L("CENA — 7:00 PM","DINNER — 7:00 PM")}</div>
+        <div class="prod-inline-desc">${L("200g salmón o atún + 2 tazas brócoli + camote mediano. 480 kcal · 52g proteína · 42g carbohidratos","200g salmon or tuna + 2 cups broccoli + medium sweet potato. 480 kcal · 52g protein · 42g carbs")}</div>
+      </div>
+    </div>
+
+    <h2>${L("SUPLEMENTOS RECOMENDADOS","RECOMMENDED SUPPLEMENTS")}</h2>
+    <p>${L("No son mágicos. Son complementos de una dieta real. Estos son los únicos que recomiendo con base en evidencia real:","They are not magic. They are supplements to a real diet. These are the only ones I recommend based on real evidence:")}</p>
+
+    <div class="highlight">
+      <p><strong>${L("Proteína Whey","Whey Protein")}</strong> — ${L("Post-entreno. 30g en los primeros 30 minutos. Es la forma más eficiente de llevar aminoácidos al músculo cuando más los necesita.","Post-workout. 30g in the first 30 minutes. It is the most efficient way to deliver amino acids to muscle when it needs them most.")}</p>
+      <p style="margin-top:8px"><strong>${L("Creatina Monohidrato","Creatine Monohydrate")}</strong> — ${L("3-5g diarios. Sin ciclar. El suplemento más estudiado en la historia del deporte. Aumenta la resíntesis de ATP — más potencia en los intercambios cortos.","3-5g daily. No cycling. The most studied supplement in sports history. Increases ATP resynthesis — more power in short exchanges.")}</p>
+      <p style="margin-top:8px"><strong>${L("Electrolitos","Electrolytes")}</strong> — ${L("Durante entrenamientos de más de 60 minutos. Sodio, potasio y magnesio se pierden con el sudor. Sin electrolitos: calambres, fatiga prematura, disminución de reflejos.","During workouts over 60 minutes. Sodium, potassium and magnesium are lost with sweat. Without electrolytes: cramps, premature fatigue, decreased reflexes.")}</p>
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin:16px 0">
+      <a class="amz-link" href="${amzL('whey protein powder sport')}" target="_blank">🛒 Whey Protein ↗</a>
+      <a class="amz-link" href="${amzL('creatine monohydrate powder')}" target="_blank">🛒 Creatina ↗</a>
+      <a class="amz-link" href="${amzL('electrolyte powder sport')}" target="_blank">🛒 Electrolitos ↗</a>
+      <a class="amz-link" href="${amzL('instant oatmeal')}" target="_blank">🛒 Avena ↗</a>
+      <a class="amz-link" href="${amzL('tuna in water canned pack')}" target="_blank">🛒 Atún x12 ↗</a>
+    </div>
+
+  </div>`;
+}
+
+// ── ENTRENAMIENTO ─────────────────────────────────────────────
+function renderEntreno(){
+  return `<div class="article">
+    <div style="font-size:11px;color:var(--gold);letter-spacing:3px;font-family:Barlow Condensed;font-weight:700;margin-bottom:8px">💪 ${L("ENTRENAMIENTO DE ÉLITE","ELITE TRAINING")}</div>
+    <h1>${L("Metodología Sagarra — El Sistema que Forma Campeones","Sagarra Methodology — The System That Forms Champions")}</h1>
+
+    <p>${L("La Metodología Sagarra es el sistema de entrenamiento desarrollado por Alcides Sagarra, el coach cubano que dirigió al equipo nacional de Cuba durante décadas y produjo más campeones olímpicos y mundiales que cualquier otro sistema en la historia del boxeo. No es un conjunto de ejercicios — es una filosofía completa de desarrollo del atleta.","The Sagarra Methodology is the training system developed by Alcides Sagarra, the Cuban coach who led the Cuban national team for decades and produced more Olympic and World champions than any other system in boxing history. It is not a set of exercises — it is a complete philosophy of athlete development.")}</p>
+
+    <h2>${L("El Principio Fundamental","The Fundamental Principle")}</h2>
+    <div class="highlight">
+      <p>${L("Un boxeador de alto rendimiento debe estar listo para competir en cualquier momento del año. No por ciclos. No por temporadas. El atleta entrena en macrociclos de preparación que mantienen su condición física y técnica al máximo de forma sostenida. Esto contrasta directamente con el modelo occidental donde el atleta se 'prepara para una pelea' — modelo que produce atletas reactivos en lugar de atletas proactivos.","A high performance boxer must be ready to compete at any time of year. Not by cycles. Not by seasons. The athlete trains in preparation macrocycles that maintain their physical and technical condition at maximum in a sustained way. This directly contrasts with the Western model where the athlete 'prepares for a fight' — a model that produces reactive athletes instead of proactive athletes.")}</p>
+    </div>
+
+    <h2>${L("Las 5 Fases del Sistema","The 5 Phases of the System")}</h2>
+
+    <div class="prod-inline">
+      <div style="font-size:24px;font-family:Bebas Neue;color:var(--gold);min-width:32px">1</div>
+      <div class="prod-inline-info">
+        <div class="prod-inline-name">${L("FASE 1 — PREPARACIÓN GENERAL (8-11 semanas)","PHASE 1 — GENERAL PREPARATION (8-11 weeks)")}</div>
+        <div class="prod-inline-desc">${L("Base aeróbica, fuerza funcional, técnica fundamental. El atleta construye la capacidad de trabajo que sostendrá todo el ciclo.","Aerobic base, functional strength, fundamental technique. The athlete builds the work capacity that will sustain the entire cycle.")}</div>
+      </div>
+    </div>
+
+    <div class="prod-inline">
+      <div style="font-size:24px;font-family:Bebas Neue;color:var(--gold);min-width:32px">2</div>
+      <div class="prod-inline-info">
+        <div class="prod-inline-name">${L("FASE 2 — PREPARACIÓN ESPECIAL (10 semanas)","PHASE 2 — SPECIAL PREPARATION (10 weeks)")}</div>
+        <div class="prod-inline-desc">${L("Intensidad aumentada. Trabajo específico de boxeo. Sparring controlado. Los sistemas energéticos se adaptan a las demandas reales del combate.","Increased intensity. Specific boxing work. Controlled sparring. The energy systems adapt to the real demands of combat.")}</div>
+      </div>
+    </div>
+
+    <div class="prod-inline">
+      <div style="font-size:24px;font-family:Bebas Neue;color:var(--gold);min-width:32px">3</div>
+      <div class="prod-inline-info">
+        <div class="prod-inline-name">${L("FASE 3 — COMPETITIVA (8 semanas)","PHASE 3 — COMPETITIVE (8 weeks)")}</div>
+        <div class="prod-inline-desc">${L("Pico de condición. Sparring al 
