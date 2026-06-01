@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -135,9 +136,6 @@ footer{background:var(--dark2);border-top:1px solid var(--border);padding:24px 2
 #ai-overlay{display:none}
 #ai-overlay.active{display:flex}
 </style>
-  <!-- TensorFlow.js + MobileNet — IA en el navegador, sin servidor -->
-  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.20.0/dist/tf.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet@2.1.0/dist/mobilenet.min.js"></script>
 </head>
 <body>
 
@@ -192,8 +190,8 @@ footer{background:var(--dark2);border-top:1px solid var(--border);padding:24px 2
   <div id="ai-overlay" style="display:none;position:fixed;inset:0;background:rgba(6,6,12,.95);backdrop-filter:blur(20px);z-index:999;flex-direction:column;align-items:center;justify-content:center">
     <div style="text-align:center">
       <div style="font-size:48px;margin-bottom:16px;animation:spin 1.5s linear infinite">🤖</div>
-      <div style="font-family:'Bebas Neue';font-size:24px;letter-spacing:4px;color:var(--gold);margin-bottom:8px" id="ai-status">ANALIZANDO FOTO...</div>
-      <div style="font-size:13px;color:var(--muted);font-family:'Barlow'" id="ai-sub">La IA está identificando el producto</div>
+      <div style="font-family:'Bebas Neue';font-size:24px;letter-spacing:4px;color:var(--gold);margin-bottom:8px" id="ai-status">ANALIZANDO CON IA PROFUNDA...</div>
+      <div style="font-size:13px;color:var(--muted);font-family:'Barlow'" id="ai-sub">Conectando con servidores de alto calibre</div>
       <div style="margin-top:20px;width:200px;height:3px;background:rgba(255,255,255,.1);border-radius:2px;overflow:hidden">
         <div style="height:100%;background:linear-gradient(90deg,var(--gold),#f5d060);border-radius:2px;animation:progress 2s ease-in-out infinite" id="ai-bar"></div>
       </div>
@@ -202,10 +200,10 @@ footer{background:var(--dark2);border-top:1px solid var(--border);padding:24px 2
 
   <!-- AI RESULT POPUP -->
   <div id="ai-result" style="display:none;position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:rgba(8,8,16,.97);backdrop-filter:blur(20px);border:1px solid rgba(212,160,23,.35);border-radius:16px;padding:20px;z-index:998;min-width:300px;max-width:90vw;animation:slideUp .4s ease">
-    <div style="font-size:10px;color:var(--gold);font-family:'Barlow Condensed';letter-spacing:2px;margin-bottom:6px">🤖 IA IDENTIFICÓ:</div>
-    <div id="ai-product-name" style="font-family:'Bebas Neue';font-size:20px;color:#fff;letter-spacing:1px;margin-bottom:12px"></div>
+    <div style="font-size:10px;color:var(--gold);font-family:'Barlow Condensed';letter-spacing:2px;margin-bottom:6px">🤖 ANÁLISIS DE LA IA:</div>
+    <div id="ai-product-name" style="font-family:'Barlow';font-size:14px;color:#fff;margin-bottom:12px;line-height:1.4;text-align:left;"></div>
     <div style="display:flex;gap:8px">
-      <button onclick="confirmSearch()" style="flex:1;background:linear-gradient(135deg,#c49010,#f0c030);color:#000;border:none;border-radius:10px;padding:12px;font-weight:900;font-size:13px;cursor:pointer;font-family:'Barlow Condensed';letter-spacing:2px">🛒 BUSCAR EN AMAZON</button>
+      <button onclick="confirmSearch()" style="flex:1;background:linear-gradient(135deg,#c49010,#f0c030);color:#000;border:none;border-radius:10px;padding:12px;font-weight:900;font-size:13px;cursor:pointer;font-family:'Barlow Condensed';letter-spacing:2px">🛒 BUSCAR RECOMENDACIÓN</button>
       <button onclick="closeAIResult()" style="background:rgba(255,255,255,.08);color:#888;border:none;border-radius:10px;padding:12px 14px;font-size:16px;cursor:pointer">✕</button>
     </div>
   </div>
@@ -418,12 +416,6 @@ function setLang(l, btn){
   if(hintEl) hintEl.textContent = hintTxts[l]||hintTxts['es'];
   document.getElementById('header-search').placeholder = t['header-placeholder'];
   renderAll();
-// Preload AI model in background
-setTimeout(function(){
-  if(window.mobilenet){
-    window.mobilenet.load().then(function(m){ window._tfModel=m; console.log('CBA AI ready'); });
-  }
-}, 3000);
 }
 
 function renderCats(){
@@ -472,15 +464,9 @@ function renderAll(){
 }
 
 renderAll();
-// Preload AI model in background
-setTimeout(function(){
-  if(window.mobilenet){
-    window.mobilenet.load().then(function(m){ window._tfModel=m; console.log('CBA AI ready'); });
-  }
-}, 3000);
 
-// ── VISUAL SEARCH WITH AI ────────────────────────────────────
-var _aiProductName = '';
+// ── VISUAL SEARCH CON BACKEND EN VERCEL (ALTO CALIBRE) ──────────────────
+var _aiSearchQuery = '';
 
 function openCamera(){ document.getElementById('visual-camera').click(); }
 function openGallery(){ document.getElementById('visual-gallery').click(); }
@@ -490,13 +476,13 @@ function searchByPhoto(input) {
   if(!file) return;
   input.value = '';
 
-  // Compress image
+  // Compresión y escalado rápido en el dispositivo para que suba veloz desde el teléfono
   var reader = new FileReader();
   reader.onload = function(e) {
     var img = new Image();
     img.onload = function() {
       var canvas = document.createElement('canvas');
-      var MAX = 800;
+      var MAX = 800; // Tamaño optimizado para la visión de Claude
       var w = img.width, h = img.height;
       if(w > MAX || h > MAX) {
         if(w > h) { h = Math.round(h*MAX/w); w = MAX; }
@@ -504,66 +490,60 @@ function searchByPhoto(input) {
       }
       canvas.width = w; canvas.height = h;
       canvas.getContext('2d').drawImage(img, 0, 0, w, h);
-      var b64 = canvas.toDataURL('image/jpeg', 0.7).split(',')[1];
-      analyzeWithAI(b64);
+      var b64 = canvas.toDataURL('image/jpeg', 0.8).split(',')[1];
+      analyzeWithVercelAI(b64);
     };
     img.src = e.target.result;
   };
   reader.readAsDataURL(file);
 }
 
-function analyzeWithAI(b64) {
+async function analyzeWithVercelAI(b64) {
   document.getElementById('ai-overlay').classList.add('active');
-  document.getElementById('ai-status').textContent = lang==='en'?'ANALYZING PHOTO...':'ANALIZANDO FOTO...';
-  document.getElementById('ai-sub').textContent = lang==='en'?'AI running in your browser':'IA corriendo en tu dispositivo';
+  document.getElementById('ai-status').textContent = lang==='en'?'ANALYZING WITH HIGH-CALIBER AI...':'ANALIZANDO CON IA DE ALTO CALIBRE...';
+  document.getElementById('ai-sub').textContent = lang==='en'?'Processing safely via Vercel...':'Procesando de forma segura en Vercel...';
 
-  var img = new Image();
-  img.onload = function() {
-    var runModel = function(model) {
-      model.classify(img, 3).then(function(predictions) {
-        document.getElementById('ai-overlay').classList.remove('active');
-        if(predictions && predictions.length > 0) {
-          var raw = predictions[0].className;
-          var name = raw.split(',')[0].trim();
-          name = name.charAt(0).toUpperCase() + name.slice(1);
-          _aiProductName = name;
-          document.getElementById('ai-product-name').textContent = name;
-          document.getElementById('ai-result').style.display = 'block';
-        } else {
-          alert(lang==='en'?'Could not identify. Try text search.':'No identificado. Usa la búsqueda de texto.');
-        }
-      }).catch(function(){ 
-        document.getElementById('ai-overlay').classList.remove('active');
-        alert(lang==='en'?'Error. Try text search.':'Error. Usa búsqueda de texto.'); 
-      });
-    };
-    if(window._tfModel) {
-      runModel(window._tfModel);
+  try {
+    // Petición real al backend seguro de tu Vercel
+    var response = await fetch('/api/analyze', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ image: b64 })
+    });
+
+    if(!response.ok) throw new Error('Error en el backend');
+
+    var data = await response.json();
+    document.getElementById('ai-overlay').classList.remove('active');
+
+    if(data && data.searchQuery) {
+      // Guardamos el término exacto para la búsqueda de Amazon
+      _aiSearchQuery = data.searchQuery;
+      
+      // Mostramos la descripción o nombre que nos mandó la IA
+      document.getElementById('ai-product-name').textContent = data.description || data.searchQuery;
+      document.getElementById('ai-result').style.display = 'block';
     } else {
-      document.getElementById('ai-sub').textContent = lang==='en'?'Loading AI (first time only)...':'Cargando IA (solo primera vez)...';
-      window.mobilenet.load().then(function(model){
-        window._tfModel = model;
-        runModel(model);
-      }).catch(function(){
-        document.getElementById('ai-overlay').classList.remove('active');
-        alert(lang==='en'?'Could not load AI.':'No se pudo cargar la IA.');
-      });
+      alert(lang==='en'?'Could not identify product. Try text search.':'No se pudo identificar el producto. Intenta con la barra de texto.');
     }
-  };
-  img.src = 'data:image/jpeg;base64,' + b64;
+
+  } catch (error) {
+    console.error(error);
+    document.getElementById('ai-overlay').classList.remove('active');
+    alert(lang==='en'?'Connection error with Vercel AI. Try text search.':'Error de conexión con la IA de Vercel. Intenta con la barra de texto.');
+  }
 }
 
-
 function confirmSearch() {
+  var query = _aiSearchQuery;
   closeAIResult();
-  if(_aiProductName) doSearch(_aiProductName);
+  if(query) doSearch(query);
 }
 
 function closeAIResult() {
   document.getElementById('ai-result').style.display = 'none';
-  _aiProductName = '';
+  _aiSearchQuery = '';
 }
-
 </script>
 </body>
 </html>
