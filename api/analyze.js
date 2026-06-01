@@ -1,7 +1,4 @@
-
-// Vercel Serverless Function — Node.js format
-module.exports = async function handler(req, res) {
-  // CORS headers
+export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
@@ -19,35 +16,37 @@ module.exports = async function handler(req, res) {
     const response = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
+        'content-type': 'application/json',
         'x-api-key': apiKey,
         'anthropic-version': '2023-06-01'
       },
       body: JSON.stringify({
-        model: 'claude-haiku-4-5-20251001',
+        model: 'claude-3-5-sonnet-20241022',
         max_tokens: 80,
-        messages: [{
-          role: 'user',
-          content: [
-            {
-              type: 'image',
-              source: { type: 'base64', media_type: 'image/jpeg', data: image }
-            },
-            {
-              type: 'text',
-              text: 'What product is in this image? Reply ONLY with the product name, brand and model for an Amazon search. Max 8 words. No explanation.'
-            }
-          ]
-        }]
+        messages: [
+          {
+            role: 'user',
+            content: [
+              {
+                type: 'image',
+                source: { type: 'base64', media_type: 'image/jpeg', data: image }
+              },
+              {
+                type: 'text',
+                text: "What product is in this image? Reply ONLY with the product name, brand and model for an Amazon search. Max 8 words. No explanation."
+              }
+            ]
+          }
+        ]
       })
     });
 
     const data = await response.json();
-    const name = data?.content?.[0]?.text?.trim() || '';
-    return res.status(200).json({ name });
+    const productName = data.content?.[0]?.text?.trim() || '';
+    res.status(200).json({ name: productName });
 
   } catch (err) {
     console.error('Error:', err);
-    return res.status(500).json({ error: 'Failed to analyze image' });
+    res.status(500).json({ error: 'Failed to analyze image' });
   }
-};
+}
