@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>CBA Store - boxingcba.com</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;700;900&family=Barlow+Condensed:wght@700;900&display=swap" rel="stylesheet">
+<style>
+:root{--gold:#d4a017;--dark:#06060c;--dark2:#0d0d18;--dark3:#12121f;--dark4:#1a1a2a;--bd:rgba(212,160,23,.15);--tx:#e8e8f0;--mt:#7a7a9a}
+*{margin:0;padding:0;box-sizing:border-box}body{background:var(--dark);color:var(--tx);font-family:'Barlow',sans-serif;min-height:100vh;overflow-x:hidden}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--dark)}::-webkit-scrollbar-thumb{background:var(--gold);border-radius:2px}
+a{text-decoration:none;color:inherit}
+header{position:sticky;top:0;z-index:100;background:rgba(6,6,12,.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--bd);padding:0 16px}
+.hdr{max-width:1100px;margin:0 auto;display:flex;align-items:center;height:56px;gap:10px}
+.logo{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.logo-ic{width:32px;height:32px;background:linear-gradient(135deg,#1a1000,#2a1800);border:1.5px solid var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue';font-size:11px;color:var(--gold);letter-spacing:1px}
+.logo-nm{font-family:'Bebas Neue';font-size:15px;letter-spacing:2px;color:#fff}
+.logo-sb{font-size:8px;color:var(--mt);font-family:'Barlow Condensed';letter-spacing:2px}
+.h-srch{flex:1;position:relative}
+.h-inp{width:100%;background:rgba(255,255,255,.05);border:1.5px solid rgba(212,160,23,.2);border-radius:10px;padding:9px 42px 9px 13px;color:#fff;font-family:'Barlow';font-size:13px;outline:none;transition:.3s}
+.h-inp:focus{border-color:var(--gold)}
+.h-inp::placeholder{color:var(--mt)}
+.h-go{position:absolute;right:6px;top:50%;transform:translateY(-50%);background:linear-gradient(135deg,#c49010,#f0c030);border:none;border-radius:7px;width:28px;height:28px;cursor:pointer;font-size:13px}
+.langs{display:flex;gap:3px;flex-shrink:0}
+.ln{background:transparent;border:1px solid rgba(255,255,255,.1);color:var(--mt);border-radius:5px;padding:4px 8px;font-size:10px;cursor:pointer;font-family:'Barlow Condensed';letter-spacing:1px;transition:.2s}
+.ln.on,.ln:hover{border-color:var(--gold);color:var(--gold)}
+.hero{background:linear-gradient(135deg,#04040a,#0a0800,#04040a);padding:30px 16px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 50%,rgba(212,160,23,.05),transparent)}
+.hero-tg{display:inline-block;background:rgba(212,160,23,.1);border:1px solid rgba(212,160,23,.22);color:var(--gold);font-family:'Barlow Condensed';font-size:10px;letter-spacing:4px;padding:4px 14px;border-radius:20px;margin-bottom:10px}
+.hero-ttl{font-family:'Bebas Neue';font-size:clamp(26px,7vw,50px);letter-spacing:3px;color:#fff;margin-bottom:5px;line-height:1}
+.hero-ttl span{background:linear-gradient(135deg,#d4a017,#f5d060);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sb{color:var(--mt);font-size:12px;max-width:480px;margin:0 auto 16px;line-height:1.6}
+.h-form{max-width:540px;margin:0 auto;position:relative}
+.h-finp{width:100%;background:rgba(255,255,255,.05);border:2px solid rgba(212,160,23,.22);border-radius:12px;padding:12px 130px 12px 18px;color:#fff;font-family:'Barlow';font-size:14px;outline:none;transition:.3s}
+.h-finp:focus{border-color:var(--gold);background:rgba(212,160,23,.04)}
+.h-finp::placeholder{color:var(--mt)}
+.h-fgo{position:absolute;right:6px;top:50%;transform:translateY(-50%);background:linear-gradient(135deg,#c49010,#f0c030);border:none;border-radius:9px;padding:8px 14px;color:#000;font-weight:900;font-family:'Barlow Condensed';font-size:12px;letter-spacing:2px;cursor:pointer;white-space:nowrap;transition:.2s}
+.h-fgo:hover{transform:translateY(-50%) translateY(-2px);box-shadow:0 6px 20px rgba(212,160,23,.4)}
+.h-hint{font-size:10px;color:var(--mt);margin-top:7px}
+.ctr-wrap{display:flex;flex-wrap:wrap;justify-content:center;gap:5px;margin-top:10px}
+.ctr{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:4px 10px;cursor:pointer;font-size:11px;font-family:'Barlow';transition:.2s;color:var(--tx)}
+.ctr.on,.ctr:hover{background:rgba(212,160,23,.1);border-color:rgba(212,160,23,.3);color:var(--gold)}
+.sec{padding:22px 16px}
+.sec-in{max-width:1100px;margin:0 auto}
+.sec-hd{display:flex;align-items:center;gap:10px;margin-bottom:13px}
+.sec-ttl{font-family:'Bebas Neue';font-size:16px;letter-spacing:3px;color:#fff}
+.sec-ln{flex:1;height:1px;background:var(--bd)}
+.sec-tg{background:rgba(212,160,23,.08);border:1px solid rgba(212,160,23,.18);color:var(--gold);font-size:9px;font-family:'Barlow Condensed';letter-spacing:2px;padding:3px 9px;border-radius:4px}
+.ab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:7px;margin-bottom:20px}
+.ab{background:var(--dark3);border:1.5px solid rgba(212,160,23,.15);border-radius:11px;padding:12px 8px;cursor:pointer;text-align:center;transition:.3s;color:var(--tx)}
+.ab:hover{border-color:rgba(212,160,23,.4);background:rgba(212,160,23,.05);transform:translateY(-3px)}
+.ab-ic{font-size:20px;display:block;margin-bottom:5px}
+.ab-lb{font-family:'Bebas Neue';font-size:11px;letter-spacing:2px;color:#fff;display:block}
+.ab-sb{font-size:9px;color:var(--mt);display:block;margin-top:1px}
+.cats{display:flex;flex-wrap:wrap;gap:6px}
+.cat{background:var(--dark3);border:none;border-radius:16px;padding:6px 12px;cursor:pointer;transition:.22s;font-size:11px;font-family:'Barlow';color:var(--tx)}
+.cat:hover{background:rgba(212,160,23,.1);color:var(--gold)}
+.fg{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:7px}
+.fc{background:var(--dark3);border:1px solid rgba(255,255,255,.05);border-radius:10px;padding:11px 8px;text-align:center;cursor:pointer;transition:.3s}
+.fc:hover{border-color:rgba(212,160,23,.22);transform:translateY(-3px)}
+.fc-ic{font-size:22px;margin-bottom:4px}
+.fc-nm{font-size:10px;color:var(--tx);font-family:'Barlow Condensed';letter-spacing:1px;font-weight:700}
+.pg{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:10px}
+.pc{background:var(--dark3);border:1px solid rgba(255,255,255,.05);border-radius:10px;overflow:hidden;transition:.3s;cursor:pointer;display:block;position:relative}
+.pc:hover{border-color:rgba(212,160,23,.22);transform:translateY(-4px);box-shadow:0 14px 40px rgba(0,0,0,.5)}
+.pc-bd{background:linear-gradient(135deg,#c49010,#f0c030);color:#000;font-size:9px;font-weight:900;font-family:'Barlow Condensed';letter-spacing:2px;padding:3px 8px}
+.pc-bdy{padding:10px}
+.pc-em{font-size:26px;display:block;margin-bottom:4px}
+.pc-nm{font-size:11px;font-weight:900;color:#fff;font-family:'Barlow Condensed';letter-spacing:1px;margin-bottom:2px;line-height:1.3}
+.pc-ds{font-size:10px;color:var(--mt);line-height:1.5;margin-bottom:6px}
+.pc-ct{background:rgba(212,160,23,.1);border:1px solid rgba(212,160,23,.2);color:var(--gold);font-size:9px;font-family:'Barlow Condensed';letter-spacing:1px;font-weight:900;padding:5px 10px;border-radius:5px;display:block;text-align:center}
+.sub-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:9px}
+.sc{border-radius:11px;padding:13px 11px;cursor:pointer;transition:.3s;display:flex;flex-direction:column}
+.sc:hover{transform:translateY(-5px);box-shadow:0 14px 40px rgba(0,0,0,.5)}
+.sc-nm{font-family:'Bebas Neue';font-size:15px;color:#fff;letter-spacing:1px;margin-bottom:2px}
+.sc-pr{font-size:10px;color:var(--gold);font-family:'Barlow Condensed';font-weight:900;letter-spacing:1px;margin-bottom:5px}
+.sc-bn{font-size:10px;color:var(--mt);font-family:'Barlow';line-height:1.5;margin-bottom:9px;flex:1}
+.sc-ct{font-size:10px;font-weight:900;font-family:'Barlow Condensed';letter-spacing:1px;padding:6px 10px;border-radius:6px;border:1px solid;text-align:center}
+.potw{background:linear-gradient(135deg,rgba(212,160,23,.08),rgba(212,160,23,.03));border:1.5px solid rgba(212,160,23,.28);border-radius:13px;padding:17px;margin-bottom:18px;position:relative}
+.ov{position:fixed;inset:0;background:rgba(4,4,10,.96);backdrop-filter:blur(16px);z-index:300;display:none;align-items:center;justify-content:center;padding:16px}
+.ov.on{display:flex}
+.mb{background:linear-gradient(135deg,#0d0d1a,#14100a);border:1.5px solid rgba(212,160,23,.26);border-radius:17px;padding:20px;width:100%;max-width:440px;max-height:88vh;overflow-y:auto}
+.mttl{font-family:'Bebas Neue';font-size:18px;letter-spacing:3px;color:#fff;margin-bottom:3px}
+.msb{font-size:11px;color:var(--mt);margin-bottom:15px}
+.mcl{float:right;background:rgba(255,255,255,.07);border:none;color:#888;border-radius:7px;padding:5px 11px;cursor:pointer;font-size:13px;margin-top:-3px}
+.inp{width:100%;background:rgba(10,10,20,.8);border:1.5px solid rgba(212,160,23,.18);border-radius:9px;padding:10px 13px;color:#fff;font-family:'Barlow';font-size:13px;outline:none;margin-top:7px;transition:.3s}
+.inp:focus{border-color:var(--gold)}
+.inp::placeholder{color:var(--mt)}
+.lbl{font-size:10px;color:var(--mt);font-family:'Barlow Condensed';letter-spacing:2px;margin:11px 0 4px}
+.tg-row{display:flex;flex-wrap:wrap;gap:5px;margin:4px 0}
+.tg{background:rgba(255,255,255,.04);border:1.5px solid rgba(255,255,255,.08);border-radius:7px;padding:6px 10px;cursor:pointer;font-family:'Barlow';font-size:11px;color:var(--tx);transition:.2s}
+.tg.on,.tg:hover{background:rgba(212,160,23,.08);border-color:rgba(212,160,23,.35);color:#fff}
+.col-tg{background:rgba(255,255,255,.04);border:1.5px solid rgba(255,255,255,.07);border-radius:14px;padding:4px 9px;cursor:pointer;font-size:11px;color:var(--tx);transition:.2s;white-space:nowrap}
+.col-tg.on{background:rgba(212,160,23,.1);border-color:rgba(212,160,23,.35);color:var(--gold)}
+.pri-btn{width:100%;background:linear-gradient(135deg,#c49010,#f0c030);color:#000;border:none;border-radius:9px;padding:12px;font-weight:900;font-family:'Bebas Neue';font-size:14px;letter-spacing:2px;cursor:pointer;margin-top:13px}
+.sec-btn{width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:var(--tx);border-radius:9px;padding:9px;font-family:'Barlow';font-size:12px;cursor:pointer;margin-top:7px}
+.res-card{display:flex;align-items:center;gap:9px;padding:10px;background:rgba(255,255,255,.03);border-radius:8px;margin-bottom:5px;transition:.2s;cursor:pointer}
+.res-card:hover{background:rgba(212,160,23,.05);border-left:2px solid var(--gold)}
+.res-ic{font-size:20px;width:26px;text-align:center;flex-shrink:0}
+.res-info{flex:1}
+.res-nm{font-size:12px;font-weight:900;color:#fff;font-family:'Barlow Condensed';letter-spacing:1px}
+.res-sb{font-size:10px;color:var(--mt)}
+.sl{width:100%;-webkit-appearance:none;height:5px;border-radius:3px;background:rgba(212,160,23,.2);outline:none;margin:12px 0;cursor:pointer}
+.sl::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;background:var(--gold);cursor:pointer;border:2px solid #000}
+.big-num{font-family:'Bebas Neue';font-size:36px;color:var(--gold);text-align:center;letter-spacing:2px}
+.ki{display:flex;align-items:center;gap:9px;padding:8px;background:rgba(255,255,255,.02);border-radius:7px;margin-bottom:5px;border-left:3px solid transparent}
+.ki.in{border-left-color:#2ecc71}
+.ki.out{opacity:.3}
+.tog{display:flex;gap:3px}
+.tu{flex:1;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:7px;padding:7px;cursor:pointer;font-family:'Barlow Condensed';font-size:11px;letter-spacing:1px;color:var(--mt);text-align:center;transition:.2s}
+.tu.on{background:rgba(212,160,23,.1);border-color:rgba(212,160,23,.3);color:var(--gold)}
+.cr{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.05)}
+.cr:last-child{border:none}
+.cv{font-family:'Bebas Neue';font-size:15px;color:var(--gold)}
+.adm{position:fixed;bottom:13px;left:13px;background:rgba(0,0,0,.7);border:1px solid rgba(255,255,255,.04);border-radius:7px;padding:5px 9px;font-size:9px;color:rgba(255,255,255,.12);cursor:pointer;z-index:50;font-family:'Barlow Condensed'}
+.adm:hover{color:var(--gold)}
+footer{background:var(--dark2);border-top:1px solid var(--bd);padding:18px 16px;text-align:center}
+.flo{font-family:'Bebas Neue';font-size:19px;letter-spacing:3px;background:linear-gradient(135deg,#d4a017,#f5d060);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:7px}
+.flk{display:flex;justify-content:center;gap:13px;flex-wrap:wrap;margin-bottom:7px}
+.flk a{color:var(--mt);font-size:11px;font-family:'Barlow Condensed';letter-spacing:1px;transition:.2s}
+.flk a:hover{color:var(--gold)}
+.fcp{font-size:10px;color:var(--mt)}
+.qstep{display:none}.qstep.on{display:block}
+.qpg{display:flex;gap:4px;margin-bottom:13px}
+.qd{flex:1;height:3px;border-radius:2px;background:rgba(255,255,255,.1)}.qd.on{background:var(--gold)}
+.wa-share{display:inline-flex;align-items:center;gap:5px;background:rgba(37,211,102,.12);border:1px solid rgba(37,211,102,.25);color:#25D366;border-radius:7px;padding:5px 10px;font-size:10px;font-family:'Barlow Condensed';letter-spacing:1px;cursor:pointer;margin-top:8px}
+@media(max-width:480px){.logo-nm{font-size:13px}.langs{gap:2px}.ln{padding:3px 6px;font-size:9px}.fg{grid-template-columns:repeat(3,1fr)}.pg{grid-template-columns:repeat(2,1fr)}.ab-grid{grid-template-columns:repeat(3,1fr)}}
+</style>
+</head>
+<body>
+<header>
+  <div class="hdr">
+    <div class="logo">
+      <div class="logo-ic">CBA</div>
+      <div><div class="logo-nm">CBA STORE</div><div class="logo-sb">boxingcba.com</div></div>
+    </div>
+    <div class="h-srch">
+      <input class="h-inp" id="hi" placeholder="Search any product on Amazon..." onkeydown="if(event.key==='Enter')gS(this.value)">
+      <button class="h-go" onclick="gS(document.getElementById('hi').value)">S</button>
+    </div>
+    <div class="langs">
+      <button class="ln on" onclick="setL('en',this)">EN</button>
+      <button class="ln" onclick="setL('es',this)">ES</button>
+      <button class="ln" onclick="setL('fr',this)">FR</button>
+      <button class="ln" onclick="setL('de',this)">DE</button>
+    </div>
+  </div>
+</header>
+<div class="hero">
+  <div class="hero-tg" id="htg">OFFICIAL STORE - CUBAN BOXING ACADEMY</div>
+  <h1 class="hero-ttl"><span id="ht1">FIND</span> <span id="ht2">EVERYTHING</span></h1>
+  <p class="hero-sb" id="hsb">Search any product on Amazon. Boxing, electronics, fashion, home and more.</p>
+  <div class="h-form">
+    <input class="h-finp" id="hfi" placeholder="What are you looking for?" onkeydown="if(event.key==='Enter')gS(this.value)">
+    <button class="h-fgo" id="hfg" onclick="gS(document.getElementById('hfi').value)">SEARCH -></button>
+  </div>
+  <p class="h-hint" id="hhn">Press Enter - goes to Amazon</p>
+  <div class="ctr-wrap">
+    <button class="ctr on" onclick="setCtr('us',this)">USA</button>
+    <button class="ctr" onclick="setCtr('uk',this)">UK</button>
+    <button class="ctr" onclick="setCtr('ca',this)">Canada</button>
+    <button class="ctr" onclick="setCtr('es_c',this)">Espana</button>
+    <button class="ctr" onclick="setCtr('de_c',this)">Germany</button>
+    <button class="ctr" onclick="setCtr('fr_c',this)">France</button>
+    <button class="ctr" onclick="setCtr('it',this)">Italy</button>
+    <button class="ctr" onclick="setCtr('mx',this)">Mexico</button>
+    <button class="ctr" onclick="setCtr('au',this)">Australia</button>
+    <button class="ctr" onclick="setCtr('br',this)">Brasil</button>
+  </div>
+</div>
+<div class="sec"><div class="sec-in">
+
+  <div id="potw" style="display:none">
+    <div class="potw">
+      <div style="background:var(--gold);color:#000;font-size:9px;font-weight:900;font-family:Barlow Condensed;letter-spacing:3px;padding:3px 9px;border-radius:4px;display:inline-block;margin-bottom:9px">PRODUCT OF THE WEEK</div>
+      <div style="font-family:Bebas Neue;font-size:20px;color:#fff;letter-spacing:2px;margin-bottom:4px" id="pw-nm"></div>
+      <div style="font-size:12px;color:#aaa;margin-bottom:11px" id="pw-ds"></div>
+      <button onclick="goA(document.getElementById('pw-lk').dataset.url)" id="pw-lk" data-url="#" style="background:linear-gradient(135deg,#f90,#f60);color:#fff;border:none;border-radius:8px;padding:9px 18px;font-weight:900;font-size:11px;cursor:pointer;font-family:Barlow Condensed;letter-spacing:2px">VIEW ON AMAZON</button>
+    </div>
+  </div>
+
+  <div class="sec-hd">
+    <div class="sec-ttl" id="att">ATHLETE ESSENTIALS</div>
+    <div class="sec-ln"></div>
+    <div class="sec-tg" id="ats">Boxing equipment - Premium brands</div>
+  </div>
+  <div class="pg" id="prods"></div>
+
+  <div class="ab-grid" style="margin-top:20px">
+    <button class="ab" onclick="oM('mq')"><span class="ab-ic">&#127919;</span><span class="ab-lb" id="a1l">GEAR QUIZ</span><span class="ab-sb" id="a1s">Find your gear</span></button>
+    <button class="ab" onclick="oM('mc')"><span class="ab-ic">&#128202;</span><span class="ab-lb" id="a2l">MY SIZE</span><span class="ab-sb" id="a2s">Size calculator</span></button>
+    <button class="ab" onclick="oM('mb2');calcB(150)"><span class="ab-ic">&#128176;</span><span class="ab-lb" id="a3l">BUDGET</span><span class="ab-sb" id="a3s">Complete kit</span></button>
+    <button class="ab" onclick="oM('mf')"><span class="ab-ic">&#128084;</span><span class="ab-lb" id="a4l">FASHION</span><span class="ab-sb" id="a4s">Style advisor</span></button>
+    <button class="ab" onclick="oM('mg')"><span class="ab-ic">&#127873;</span><span class="ab-lb" id="a5l">GIFT FINDER</span><span class="ab-sb" id="a5s">Perfect gift</span></button>
+    <button class="ab" onclick="oM('mk')"><span class="ab-ic">&#128118;</span><span class="ab-lb" id="a6l">KIDS</span><span class="ab-sb" id="a6s">School and more</span></button>
+  </div>
+
+  <div class="sec-hd" style="margin-top:4px">
+    <div class="sec-ttl" id="cttl">CATEGORIES</div><div class="sec-ln"></div>
+  </div>
+  <div class="cats" id="cats"></div>
+
+  <div class="sec-hd" style="margin-top:20px">
+    <div class="sec-ttl" id="pttl">POPULAR</div><div class="sec-ln"></div>
+  </div>
+  <div class="fg" id="feats"></div>
+
+  <div class="sec-hd" style="margin-top:20px">
+    <div class="sec-ttl" id="sttl">SUBSCRIPTIONS</div>
+    <div class="sec-ln"></div>
+    <div class="sec-tg" id="stg">FIXED REWARDS</div>
+  </div>
+  <div class="sub-grid" id="subs"></div>
+
+</div></div>
+
+<div class="ov" id="mq"><div class="mb">
+  <button class="mcl" onclick="cM('mq')">X</button>
+  <div class="mttl" id="qttl">GEAR QUIZ</div>
+  <div class="msb" id="qsb">3 questions - exact recommendation</div>
+  <div class="qpg"><div class="qd on" id="qd1"></div><div class="qd" id="qd2"></div><div class="qd" id="qd3"></div></div>
+  <div class="qstep on" id="qs1">
+    <div class="lbl" id="qq1">HOW MUCH DO YOU WEIGH?</div>
+    <div class="tg-row">
+      <button class="tg" onclick="qa(1,'light')">Light - up to 147 lbs</button>
+      <button class="tg" onclick="qa(1,'med')">Medium - 148-175 lbs</button>
+      <button class="tg" onclick="qa(1,'heavy')">Heavy - 176+ lbs</button>
+    </div>
+  </div>
+  <div class="qstep" id="qs2">
+    <div class="lbl" id="qq2">YOUR BOXING STYLE?</div>
+    <div class="tg-row">
+      <button class="tg" onclick="qa(2,'speed')">Speed and movement</button>
+      <button class="tg" onclick="qa(2,'power')">Power and pressure</button>
+      <button class="tg" onclick="qa(2,'tech')">Technical and angles</button>
+    </div>
+  </div>
+  <div class="qstep" id="qs3">
+    <div class="lbl" id="qq3">YOUR LEVEL?</div>
+    <div class="tg-row">
+      <button class="tg" onclick="qa(3,'beg')">Beginner</button>
+      <button class="tg" onclick="qa(3,'int')">Intermediate</button>
+      <button class="tg" onclick="qa(3,'comp')">Competitor</button>
+    </div>
+  </div>
+  <div class="qstep" id="qs4"><div id="qres"></div></div>
+</div></div>
+
+<div class="ov" id="mc"><div class="mb">
+  <button class="mcl" onclick="cM('mc')">X</button>
+  <div class="mttl" id="clttl">SIZE CALCULATOR</div>
+  <div class="msb" id="clsb">Enter weight - get exact sizes</div>
+  <div class="tog">
+    <button class="tu on" id="u-lb" onclick="setU('lbs')">POUNDS</button>
+    <button class="tu" id="u-kg" onclick="setU('kg')">KILOS</button>
+  </div>
+  <div class="lbl" id="cl1">WEIGHT</div>
+  <input type="number" class="inp" id="c-w" placeholder="Ex: 154" oninput="calcR()" min="40" max="400">
+  <div class="lbl" id="cl2">HEIGHT (feet)</div>
+  <input type="number" class="inp" id="c-h" placeholder="Ex: 5.9" step="0.1" oninput="calcR()" min="3" max="8">
+  <div id="c-res"></div>
+</div></div>
+
+<div class="ov" id="mb2"><div class="mb">
+  <button class="mcl" onclick="cM('mb2')">X</button>
+  <div class="mttl" id="bgttl">BUDGET KIT</div>
+  <div class="msb" id="bgsb">Slide to set your budget</div>
+  <div class="big-num" id="bnum">$150</div>
+  <input type="range" class="sl" id="bsl" min="50" max="500" step="25" value="150" oninput="calcB(this.value)">
+  <div style="display:flex;justify-content:space-between;font-size:9px;color:var(--mt);margin-bottom:13px"><span>$50</span><span>$500</span></div>
+  <div id="bkit"></div>
+  <div id="btot" style="margin-top:9px;padding:10px;background:rgba(212,160,23,.06);border-radius:7px;font-family:Bebas Neue;font-size:13px;color:var(--gold);letter-spacing:2px;text-align:center"></div>
+</div></div>
+
+<div class="ov" id="mf"><div class="mb">
+  <button class="mcl" onclick="cM('mf')">X</button>
+  <div class="mttl" id="fttl">FASHION ADVISOR</div>
+  <div class="msb">Your measurements - perfect recommendations</div>
+  <div id="f-form">
+    <div class="lbl" id="fgl">GENDER</div>
+    <div class="tg-row">
+      <button class="tg on" id="fg-m" onclick="setFG('man',this)">Man</button>
+      <button class="tg" id="fg-w" onclick="setFG('woman',this)">Woman</button>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+      <div><div class="lbl" id="fwl">WEIGHT (lbs)</div><input type="number" class="inp" id="f-w" placeholder="154" oninput="calcFS()"></div>
+      <div><div class="lbl" id="fhl">HEIGHT (feet)</div><input type="number" class="inp" id="f-h" placeholder="5.9" step="0.1" oninput="calcFS()"></div>
+    </div>
+    <div class="lbl" id="fskl">SKIN TONE</div>
+    <div class="tg-row">
+      <button class="tg" id="sk-l" onclick="setFS_sk('light',this)">Light</button>
+      <button class="tg" id="sk-m" onclick="setFS_sk('medium',this)">Medium</button>
+      <button class="tg" id="sk-d" onclick="setFS_sk('dark',this)">Dark</button>
+    </div>
+    <div class="lbl" id="fcll">FAVORITE COLORS</div>
+    <div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:8px" id="f-cols"></div>
+    <div class="lbl" id="fstl">STYLE</div>
+    <div class="tg-row">
+      <button class="tg on" id="fst-c" onclick="setFST('casual',this)">Casual</button>
+      <button class="tg" id="fst-s" onclick="setFST('sport',this)">Sport</button>
+      <button class="tg" id="fst-f" onclick="setFST('formal',this)">Formal</button>
+      <button class="tg" id="fst-e" onclick="setFST('elegant',this)">Elegant</button>
+    </div>
+    <div id="f-sz-prev" style="display:none;background:rgba(212,160,23,.06);border:1px solid rgba(212,160,23,.2);border-radius:7px;padding:9px;margin:10px 0;font-family:Barlow Condensed;font-size:11px;color:var(--gold);letter-spacing:1px;text-align:center"></div>
+    <button class="pri-btn" onclick="showF()">SEE MY OPTIONS ON AMAZON -></button>
+  </div>
+  <div id="f-res" style="display:none">
+    <button class="sec-btn" onclick="document.getElementById('f-form').style.display='block';document.getElementById('f-res').style.display='none'">Edit measurements</button>
+    <div id="f-res-grid" style="margin-top:10px"></div>
+  </div>
+</div></div>
+
+<div class="ov" id="mg"><div class="mb">
+  <button class="mcl" onclick="cM('mg')">X</button>
+  <div class="mttl" id="gfttl">GIFT FINDER</div>
+  <div class="msb" id="gfsb">Enter details - get the perfect gift</div>
+  <div id="gf-form">
+    <div class="lbl" id="gfl1">WHO IS IT FOR?</div><div class="tg-row" id="gf-who"></div>
+    <div class="lbl" id="gfl2">AGE RANGE</div><div class="tg-row" id="gf-age"></div>
+    <div class="lbl" id="gfl3">GENDER</div><div class="tg-row" id="gf-gen"></div>
+    <div class="lbl" id="gfl4">PERSONALITY</div><div class="tg-row" id="gf-per"></div>
+    <div class="lbl" id="gfl5">OCCASION</div><div class="tg-row" id="gf-occ"></div>
+    <div class="lbl" id="gfl6">BUDGET</div><div class="tg-row" id="gf-bud"></div>
+    <button class="pri-btn" onclick="showGift()">FIND THE PERFECT GIFT -></button>
+  </div>
+  <div id="gf-res" style="display:none">
+    <button class="sec-btn" onclick="document.getElementById('gf-form').style.display='block';document.getElementById('gf-res').style.display='none'">Change details</button>
+    <div id="gf-res-grid" style="margin-top:10px"></div>
+  </div>
+</div></div>
+
+<div class="ov" id="mk"><div class="mb">
+  <button class="mcl" onclick="cM('mk')">X</button>
+  <div class="mttl" id="kdttl">KIDS SECTION</div>
+  <div class="msb" id="kdsb">Age and needs - we find everything</div>
+  <div id="kd-form">
+    <div class="lbl" id="kdl1">AGE RANGE</div><div class="tg-row" id="kd-age"></div>
+    <div class="lbl" id="kdl2">GENDER</div><div class="tg-row" id="kd-gen"></div>
+    <div class="lbl" id="kdl3">WHAT DO YOU NEED?</div><div class="tg-row" id="kd-need"></div>
+    <button class="pri-btn" onclick="showKids()">SEE RECOMMENDATIONS -></button>
+    <div style="background:rgba(0,200,100,.06);border:1px solid rgba(0,200,100,.2);border-radius:9px;padding:13px;margin-top:14px">
+      <div style="font-family:Bebas Neue;font-size:13px;color:#0c6;letter-spacing:2px;margin-bottom:8px" id="kdnt">NUTRITION TIPS FOR KIDS</div>
+      <div style="font-size:11px;color:#aaa;line-height:1.8" id="kd-tips"></div>
+    </div>
+  </div>
+  <div id="kd-res" style="display:none">
+    <button class="sec-btn" onclick="document.getElementById('kd-form').style.display='block';document.getElementById('kd-res').style.display='none'">Change</button>
+    <div id="kd-res-grid" style="margin-top:10px"></div>
+  </div>
+</div></div>
+
+<div class="ov" id="ma"><div class="mb">
+  <button class="mcl" onclick="cM('ma')">X</button>
+  <div class="mttl">PRODUCT OF THE WEEK</div>
+  <div class="msb">Coach only</div>
+  <div id="a-pin">
+    <input type="password" class="inp" id="a-p" placeholder="PIN..." onkeydown="if(event.key==='Enter')chkP()">
+    <button class="pri-btn" onclick="chkP()">ENTER</button>
+  </div>
+  <div id="a-form" style="display:none">
+    <input type="text" class="inp" id="a-nm" placeholder="Product name...">
+    <input type="text" class="inp" id="a-ds" placeholder="Short description..." style="margin-top:8px">
+    <input type="text" class="inp" id="a-lk" placeholder="Amazon link with your tag..." style="margin-top:8px">
+    <button class="pri-btn" onclick="savePW()">PUBLISH</button>
+    <button class="sec-btn" onclick="delPW()">Remove product of the week</button>
+  </div>
+</div></div>
+
+<button class="adm" onclick="oM('ma')">@</button>
+
+<footer>
+  <div class="flo">CBA STORE</div>
+  <div class="flk">
+    <a href="#" onclick="return goA('https://boxingcba.com')">boxingcba.com</a>
+    <a href="#" onclick="return goA('https://wa.me/17027234009')">WhatsApp</a>
+    <a href="tel:+17027234009">(702) 723-4009</a>
+  </div>
+  <div class="fcp" id="fcp">CBA Store - boxingcba.com - Amazon Affiliate - OneLink Active 10 Countries</div>
+</footer>
+
+<script>
+
+var TAG='osvimerboxing-20';
+var L='en';
+var CTR='us';
+var DOMAINS={us:'amazon.com',uk:'amazon.co.uk',ca:'amazon.ca',es_c:'amazon.es',de_c:'amazon.de',fr_c:'amazon.fr',it:'amazon.it',mx:'amazon.com.mx',au:'amazon.com.au',br:'amazon.com.br'};
+
+function goA(url){
+  if(!url||url==='#')return false;
+  window.open(url,'_blank','noopener,noreferrer');
+  return false;
+}
+function gS(q){
+  q=(q||'').trim();if(!q)return;
+  var dom=DOMAINS[CTR]||'amazon.com';
+  goA('https://'+dom+'/s?k='+encodeURIComponent(q)+'&tag='+TAG);
+}
+function aUrl(path){return 'https://'+(DOMAINS[CTR]||'amazon.com')+path+'?tag='+TAG;}
+function aDp(asin){return 'https://'+(DOMAINS[CTR]||'amazon.com')+'/dp/'+asin+'?tag='+TAG;}
+function setCtr(c,btn){
+  CTR=c;
+  document.querySelectorAll('.ctr').forEach(function(b){b.classList.remove('on');});
+  btn.classList.add('on');
+}
+
+var T={
+en:{htg:'OFFICIAL STORE - CUBAN BOXING ACADEMY',ht1:'FIND',ht2:'EVERYTHING',hsb:'Search any product on Amazon. Boxing, electronics, fashion, home and more.',hfg:'SEARCH ->',hhn:'Press Enter - goes to Amazon',att:'ATHLETE ESSENTIALS',ats:'Boxing equipment - Premium brands',cttl:'CATEGORIES',pttl:'POPULAR',rttl:'RECOMMENDED',sttl:'SUBSCRIPTIONS',stg:'FIXED REWARDS',a1l:'GEAR QUIZ',a1s:'Find your gear',a2l:'MY SIZE',a2s:'Size calculator',a3l:'BUDGET',a3s:'Complete kit',a4l:'FASHION',a4s:'Style advisor',a5l:'GIFT FINDER',a5s:'Perfect gift',a6l:'KIDS',a6s:'School and more',qttl:'GEAR QUIZ',qsb:'3 questions - exact recommendation',qq1:'HOW MUCH DO YOU WEIGH?',qq2:'YOUR BOXING STYLE?',qq3:'YOUR LEVEL?',clttl:'SIZE CALCULATOR',clsb:'Enter weight - get exact sizes',cl1:'WEIGHT',cl2:'HEIGHT (feet)',bgttl:'BUDGET KIT',bgsb:'Slide to set your budget',fttl:'FASHION ADVISOR',fsb:'Your measurements - perfect recommendations',fgl:'GENDER',fwl:'WEIGHT (lbs)',fhl:'HEIGHT (feet)',fskl:'SKIN TONE',fcll:'FAVORITE COLORS',fstl:'STYLE',gfttl:'GIFT FINDER',gfsb:'Enter details - get the perfect gift',gfl1:'WHO IS IT FOR?',gfl2:'AGE RANGE',gfl3:'GENDER',gfl4:'PERSONALITY',gfl5:'OCCASION',gfl6:'BUDGET',kdttl:'KIDS SECTION',kdsb:'Age and needs - we find everything',kdl1:'AGE RANGE',kdl2:'GENDER',kdl3:'WHAT DO YOU NEED?',kdnt:'NUTRITION TIPS FOR KIDS',fcp:'CBA Store - boxingcba.com - Amazon Affiliate - OneLink Active 10 Countries'},
+es:{htg:'TIENDA OFICIAL - CUBAN BOXING ACADEMY',ht1:'ENCUENTRA',ht2:'TODO',hsb:'Busca cualquier producto en Amazon. Boxeo, electronicos, moda, hogar y mas.',hfg:'BUSCAR ->',hhn:'Presiona Enter - va directo a Amazon',att:'ESENCIALES PARA ATLETAS',ats:'Equipo de boxeo - Marcas premium',cttl:'CATEGORIAS',pttl:'LO MAS BUSCADO',rttl:'RECOMENDADO',sttl:'SUSCRIPCIONES',stg:'COMISIONES FIJAS',a1l:'QUE EQUIPO?',a1s:'Quiz personalizado',a2l:'MI TALLA',a2s:'Calculadora',a3l:'PRESUPUESTO',a3s:'Kit completo',a4l:'MODA',a4s:'Asesor de estilo',a5l:'REGALO',a5s:'Regalo perfecto',a6l:'NINOS',a6s:'Escuela y mas',qttl:'QUE EQUIPO NECESITO?',qsb:'3 preguntas - recomendacion exacta',qq1:'CUANTO PESAS?',qq2:'TU ESTILO DE BOXEO?',qq3:'TU NIVEL?',clttl:'CALCULADORA DE TALLA',clsb:'Escribe tu peso - tus tallas exactas',cl1:'PESO',cl2:'ALTURA (pies)',bgttl:'KIT POR PRESUPUESTO',bgsb:'Mueve el slider y armo tu kit',fttl:'ASESOR DE MODA',fsb:'Tus medidas - recomendaciones perfectas',fgl:'GENERO',fwl:'PESO (lbs)',fhl:'ALTURA (pies)',fskl:'TONO DE PIEL',fcll:'COLORES FAVORITOS',fstl:'ESTILO',gfttl:'BUSCADOR DE REGALOS',gfsb:'Datos de la persona - regalo perfecto',gfl1:'PARA QUIEN ES?',gfl2:'EDAD',gfl3:'GENERO',gfl4:'PERSONALIDAD',gfl5:'OCASION',gfl6:'PRESUPUESTO',kdttl:'SECCION NINOS',kdsb:'Edad y necesidades - encontramos todo',kdl1:'EDAD',kdl2:'GENERO',kdl3:'QUE NECESITAS?',kdnt:'CONSEJOS NUTRICIONALES',fcp:'CBA Store - boxingcba.com - Amazon Affiliate - OneLink Activo 10 Paises'},
+fr:{htg:'BOUTIQUE OFFICIELLE - CUBAN BOXING ACADEMY',ht1:'TROUVEZ',ht2:'TOUT',hsb:'Cherchez nimporte quel produit sur Amazon. Boxe, electronique, mode, maison et plus.',hfg:'CHERCHER ->',hhn:'Appuyez sur Entree - va directement a Amazon',att:'ESSENTIELS ATHLETE',ats:'Equipement de boxe - Marques premium',cttl:'CATEGORIES',pttl:'LES PLUS RECHERCHES',rttl:'RECOMMANDE',sttl:'ABONNEMENTS',stg:'RECOMPENSES FIXES',a1l:'QUIZ EQUIP.',a1s:'Trouvez votre equipement',a2l:'MA TAILLE',a2s:'Calculateur',a3l:'BUDGET',a3s:'Kit complet',a4l:'MODE',a4s:'Conseiller style',a5l:'CADEAU',a5s:'Cadeau parfait',a6l:'ENFANTS',a6s:'Ecole et plus',qttl:'QUIZ EQUIPEMENT',qsb:'3 questions - recommandation exacte',qq1:'COMBIEN PESEZ-VOUS?',qq2:'VOTRE STYLE DE BOXE?',qq3:'VOTRE NIVEAU?',clttl:'CALCULATEUR DE TAILLE',clsb:'Entrez votre poids - obtenez vos tailles',cl1:'POIDS',cl2:'TAILLE (pieds)',bgttl:'KIT PAR BUDGET',bgsb:'Glissez pour definir votre budget',fttl:'CONSEILLER MODE',fsb:'Vos mesures - recommandations parfaites',fgl:'GENRE',fwl:'POIDS (lbs)',fhl:'TAILLE (pieds)',fskl:'TEINT DE PEAU',fcll:'COULEURS FAVORITES',fstl:'STYLE',gfttl:'TROUVEUR DE CADEAUX',gfsb:'Details du destinataire - cadeau parfait',gfl1:'POUR QUI?',gfl2:'TRANCHE AGE',gfl3:'GENRE',gfl4:'PERSONNALITE',gfl5:'OCCASION',gfl6:'BUDGET',kdttl:'SECTION ENFANTS',kdsb:'Age et besoins - on trouve tout',kdl1:'TRANCHE AGE',kdl2:'GENRE',kdl3:'QUE VOUS FAUT-IL?',kdnt:'CONSEILS NUTRITIONNELS',fcp:'CBA Store - boxingcba.com - Amazon Affilie - OneLink Actif 10 Pays'},
+de:{htg:'OFFIZIELLER SHOP - CUBAN BOXING ACADEMY',ht1:'FINDE',ht2:'ALLES',hsb:'Suche jedes Produkt bei Amazon. Boxen, Elektronik, Mode, Haus und mehr.',hfg:'SUCHEN ->',hhn:'Enter drucken - geht direkt zu Amazon',att:'ATHLETEN ESSENTIALS',ats:'Boxausrustung - Premium Marken',cttl:'KATEGORIEN',pttl:'AM MEISTEN GESUCHT',rttl:'EMPFOHLEN',sttl:'ABONNEMENTS',stg:'FESTE PRAMIEN',a1l:'AUSRUSTUNGS-QUIZ',a1s:'Finde deine Ausrustung',a2l:'MEINE GROSSE',a2s:'Grossenrechner',a3l:'BUDGET',a3s:'Komplettes Kit',a4l:'MODE',a4s:'Stilberater',a5l:'GESCHENK',a5s:'Perfektes Geschenk',a6l:'KINDER',a6s:'Schule und mehr',qttl:'AUSRUSTUNGS-QUIZ',qsb:'3 Fragen - genaue Empfehlung',qq1:'WIE VIEL WIEGST DU?',qq2:'DEIN BOXSTIL?',qq3:'DEIN NIVEAU?',clttl:'GROSSENRECHNER',clsb:'Gewicht eingeben - Grossen erhalten',cl1:'GEWICHT',cl2:'GROSSE (Fuss)',bgttl:'BUDGET-KIT',bgsb:'Slider bewegen fur dein Budget',fttl:'MODE-BERATER',fsb:'Deine Masse - perfekte Empfehlungen',fgl:'GESCHLECHT',fwl:'GEWICHT (lbs)',fhl:'GROSSE (Fuss)',fskl:'HAUTTON',fcll:'LIEBLINGSFARBEN',fstl:'STIL',gfttl:'GESCHENK-FINDER',gfsb:'Details zur Person - perfektes Geschenk',gfl1:'FUR WEN?',gfl2:'ALTERSGRUPPE',gfl3:'GESCHLECHT',gfl4:'PERSONLICHKEIT',gfl5:'ANLASS',gfl6:'BUDGET',kdttl:'KINDER-BEREICH',kdsb:'Alter und Bedarf - wir finden alles',kdl1:'ALTERSGRUPPE',kdl2:'GESCHLECHT',kdl3:'WAS BRAUCHST DU?',kdnt:'ERNAHRUNGSTIPPS',fcp:'CBA Store - boxingcba.com - Amazon Affiliate - OneLink Aktiv 10 Lander'}
+};
+var GF_DATA={
+  who:{en:['Mom','Dad','Wife','Girlfriend','Husband','Boyfriend','Friend','Colleague','Child'],es:['Mama','Papa','Esposa','Novia','Esposo','Novio','Amigo o Amiga','Colega','Nino o Nina']},
+  age:{en:['0-12','13-17','18-25','26-35','36-50','50+'],es:['0-12','13-17','18-25','26-35','36-50','50+']},
+  gen:{en:['Woman','Man'],es:['Mujer','Hombre']},
+  per:{en:['Elegant','Casual','Sporty','Romantic','Creative','Intellectual'],es:['Elegante','Casual','Deportiva','Romantica','Creativa','Intelectual']},
+  occ:{en:['Birthday','Mothers Day','Fathers Day','Valentines Day','Christmas','Graduation','Anniversary','Just Because'],es:['Cumpleanos','Dia de las Madres','Dia del Padre','San Valentin','Navidad','Graduacion','Aniversario','Sin Ocasion']},
+  bud:{en:['$25','$50','$100','$150','$200','$300+'],es:['$25','$50','$100','$150','$200','$300+']}
+};
+var KD_DATA={
+  age:{en:['0-3 yrs','4-6 yrs','7-10 yrs','11-14 yrs'],es:['0-3 anos','4-6 anos','7-10 anos','11-14 anos']},
+  gen:{en:['Boy','Girl','Both'],es:['Nino','Nina','Ambos']},
+  need:{en:['School Clothes','Backpack','Shoes','Lunch and Snacks','Vitamins','Toys','School Supplies','Underwear and Socks'],es:['Ropa Escolar','Mochila','Zapatos','Merienda y Almuerzo','Vitaminas','Juguetes','Utiles Escolares','Ropa Interior']},
+  tips:{en:'Water is the BEST drink for hydration - completely avoid sugary sodas.\nGreek yogurt (Chobani or Fage) provides the ideal balance of protein and probiotics for optimal growth.\nAvoid excess sugar and refined flour.\nA wholesome oatmeal breakfast gives sustained physical and mental energy for school.\nEnsure a daily intake of fresh fruits and vegetables.',es:'El agua es la MEJOR bebida para la hidratación - evita por completo los refrescos y jugos azucarados.\nEl yogur griego (Chobani o Fage) aporta la proteína y los probióticos ideales para el sano crecimiento y recuperación.\nEvita el exceso de azúcar y harinas refinadas.\nUn desayuno con avena de grano entero garantiza energía sostenida y mejor enfoque en la escuela.\nPrioriza frutas, vegetales frescos y proteínas limpias diariamente.'}
+};
+var ALL_COLORS=['Black','White','Gray','Light Gray','Charcoal','Blue','Dark Blue','Sky Blue','Navy Blue','Green','Mint Green','Olive','Mustard','Red','Burgundy','Pink','Light Pink','Purple','Lavender','Orange','Coral','Brown','Beige','Camel','Sand','Wine Red','Nude','Gold','Silver','Turquoise','Sunflower Yellow','Hot Pink','Teal','Maroon','Cream','Forest Green'];
+var FEATS=[{n:'Boxing Gloves',q:'Adidas USA Boxing gloves competition approved'},{n:'Headgear',q:'Adidas boxing headgear USA Boxing IBA approved'},{n:'Hand Wraps',q:'boxing hand wraps 180 inches metacarpal'},{n:'Mouthguard',q:'Everlast double mouthguard boxing'},{n:'Adidas Shoes',q:'Adidas Box Hog 4 boxing shoes'},{n:'Nike Shoes',q:'Nike Hyperko 2 boxing shoes competition'},{n:'Adidas Shorts',q:'Adidas boxing shorts IBA approved tournament'},{n:'Protein',q:'Optimum Nutrition Gold Standard Whey protein'},{n:'Supplements',q:'Isopure Zero Carb protein powder clean'},{n:'Luxury Perfume W',q:'Dior Chanel YSL Versace women perfume luxury'},{n:'Luxury Perfume M',q:'Dior Sauvage Chanel Bleu Versace men cologne'},{n:'Kids Backpack',q:'JanSport Herschel Nike Under Armour backpack school'},{n:'Work Shoes',q:'Skechers Work Hoka non slip comfortable shoes'},{n:'Smart TV',q:'4K Smart TV Amazon Fire'},{n:'Laptop',q:'laptop computer best seller'},{n:'Headphones',q:'wireless headphones ANC bluetooth'},{n:'Smartwatch',q:'smartwatch fitness tracker'},{n:'Face Cream',q:'La Roche Posay CeraVe Olay face cream moisturizer'}];
+var CATS={
+  en:['Boxing','Shoes','Fitness','Clothing','Electronics','Home','Beauty','Gaming','Books','Health','Kids','Pets','Grocery','Music','Watches','Jewelry','Auto','Tools'],
+  es:['Boxeo','Calzado','Fitness','Ropa','Electronicos','Hogar','Belleza','Gaming','Libros','Salud','Ninos','Mascotas','Alimentos','Musica','Relojes','Joyeria','Auto','Herramientas'],
+  fr:['Boxe','Chaussures','Fitness','Vetements','Electronique','Maison','Beaute','Gaming','Livres','Sante','Enfants','Animaux','Alimentation','Musique','Montres','Bijoux','Auto','Outils'],
+  de:['Boxen','Schuhe','Fitness','Kleidung','Elektronik','Haus','Schonheit','Gaming','Bucher','Gesundheit','Kinder','Haustiere','Lebensmittel','Musik','Uhren','Schmuck','Auto','Werkzeug']
+};
+var CATS_Q=['boxing equipment gloves wraps','shoes sneakers athletics','fitness equipment gym home','athletic clothing sportswear','electronics smartphones tablets','home kitchen appliances','beauty skincare makeup','video games console','books bestsellers kindle','health supplements protein','kids toys school supplies','pet supplies food','grocery food healthy organic','music instruments accessories','watches smartwatch fitness','jewelry accessories pandora','car accessories auto parts','tools hardware improvement'];
+var PRODS=[{b:'ATHLETE PICK',n:'Adidas Boxing Gloves',d:'USA Boxing + IBA Approved. Competition leather gloves.',a:'B0F4NM14Y5'},{b:'ATHLETE PICK',n:'Adidas Headgear',d:'USA Boxing + IBA Approved. High density foam.',a:'B0B3R2V65J'},{b:'ATHLETE PICK',n:'Adidas Box Hog 4',d:'Flat sole - unmatched speed and crisp movement on canvas.',a:'B0CMXQ7KSK'},{b:'ATHLETE PICK',n:'Nike Hyperko 2',d:'Max ankle support - built for heavyweights and pressure fighters.',a:'B0D1CK8F51'},{b:'COACH PICK',n:'Everlast Double Mouthguard',d:'Upper and lower jaw protection. High performance safety.',a:'B00076ZDQ8'},{b:'COACH PICK',n:'Adidas IBA Shorts',d:'Official competition uniform for authorized tournaments.',a:'B081ZRYM6Z'}];
+var SUBS=[{nm:'Amazon Prime',pr:'14.99/mo',bn:'Free 2-day shipping + Prime Video + Music',ct:'ACTIVATE ->',url:'/prime',col:'blue'},{nm:'Audible',pr:'7.95/mo',bn:'Millions of audiobooks and podcasts',ct:'FREE TRIAL ->',url:'/hz/audible/mlp/membership/prime',col:'orange'},{nm:'Amazon Haul',pr:'From 2.99',bn:'Fashion home tech at amazing prices',ct:'SHOP HAUL ->',url:'/haul',col:'red'},{nm:'Kindle Unlimited',pr:'11.99/mo',bn:'4M+ books and audiobooks',ct:'READ FREE ->',url:'/kindle-dbs/hz/subscribe/ku',col:'green'},{nm:'Amazon Music',pr:'10.99/mo',bn:'100M+ songs ad-free',ct:'LISTEN FREE ->',url:'/music/unlimited',col:'purple'},{nm:'Prime Students',pr:'6 months FREE',bn:'Ages 18-24 - 5pct cashback on fashion',ct:'GET IT FREE ->',url:'/amazonprime',col:'blue'}];
+var KIT=[{n:'Hand Wraps 180in',p:15,q:'boxing hand wraps 180 inches metacarpal',a:''},{n:'Double Mouthguard',p:20,q:'',a:'B00076ZDQ8'},{n:'Boxing Gloves 12oz',p:55,q:'',a:'B0F4NM14Y5'},{n:'Adidas Headgear',p:80,q:'',a:'B0B3R2V65J'},{n:'Adidas Box Hog 4',p:90,q:'',a:'B0CMXQ7KSK'},{n:'Adidas IBA Shorts',p:45,q:'',a:'B081ZRYM6Z'},{n:'Competition Gloves',p:120,q:'',a:'B0F4NM14Y5'}];
+
+function setL(l,btn){
+  L=l;
+  document.querySelectorAll('.ln').forEach(function(b){b.classList.remove('on');});
+  if(btn)btn.classList.add('on');
+  var t=T[l]||T.en;
+  Object.keys(t).forEach(function(k){
+    var el=document.getElementById(k);
+    if(el)el.textContent=t[k];
+  });
+  var ph={en:'What are you looking for?',es:'Que estas buscando?',fr:'Que cherchez-vous?',de:'Was suchst du?'};
+  var ph2={en:'Search any product on Amazon...',es:'Busca cualquier producto en Amazon...',fr:'Rechercher sur Amazon...',de:'Amazon durchsuchen...'};
+  document.getElementById('hfi').placeholder=ph[l]||ph.en;
+  document.getElementById('hi').placeholder=ph2[l]||ph2.en;
+  renderAll();
+  buildGFF();
+  buildKDF();
+}
+
+function renderAll(){
+  var cg=document.getElementById('cats');
+  cg.innerHTML='';
+  var cats=CATS[L]||CATS.en;
+  cats.forEach(function(c,i){
+    var btn=document.createElement('button');
+    btn.className='cat';btn.textContent=c;
+    btn.onclick=(function(q){return function(){gS(q);};})(CATS_Q[i]||c);
+    cg.appendChild(btn);
+  });
+  var fg=document.getElementById('feats');
+  fg.innerHTML='';
+  FEATS.forEach(function(f){
+    var d=document.createElement('div');
+    d.className='fc';
+    d.innerHTML='<div class="fc-ic">&#128293;<\/div><div class="fc-nm">'+f.n+'<\/div>';
+    d.onclick=(function(q){return function(){gS(q);};})(f.q);
+    fg.appendChild(d);
+  });
+  var pg=document.getElementById('prods');
+  pg.innerHTML='';
+  PRODS.forEach(function(p){
+    var el=document.createElement('a');
+    el.className='pc';el.href='#';
+    el.onclick=(function(u){return function(){return goA(u);};})(aDp(p.a));
+    el.innerHTML='<div class="pc-bd">'+p.b+'<\/div><div class="pc-bdy"><span class="pc-em">&#129354;<\/span><div class="pc-nm">'+p.n+'<\/div><div class="pc-ds">'+p.d+'<\/div><div class="pc-ct">VIEW ON AMAZON<\/div><\/div>';
+    pg.appendChild(el);
+  });
+  var sg=document.getElementById('subs');
+  sg.innerHTML='';
+  var colors={blue:'rgba(0,168,255,.15)',orange:'rgba(255,153,0,.15)',red:'rgba(255,50,100,.15)',green:'rgba(0,200,100,.15)',purple:'rgba(150,50,255,.15)'};
+  var tc={blue:'#0af',orange:'#f90',red:'#f36',green:'#0c6',purple:'#96f'};
+  SUBS.forEach(function(s){
+    var el=document.createElement('a');
+    el.className='sc';el.href='#';
+    el.style.cssText='background:'+(colors[s.col]||colors.blue)+';border:1.5px solid '+(tc[s.col]||'#0af')+';';
+    el.onclick=(function(u){return function(){return goA(aUrl(u));};})(s.url);
+    el.innerHTML='<div class="sc-nm">'+s.nm+'<\/div><div class="sc-pr">$'+s.pr+'<\/div><div class="sc-bn">'+s.bn+'<\/div><div class="sc-ct" style="color:'+(tc[s.col]||'#0af')+';border-color:'+(tc[s.col]||'#0af')+'">'+s.ct+'<\/div>';
+    sg.appendChild(el);
+  });
+}
+
+function oM(id){document.getElementById(id).classList.add('on');}
+function cM(id){
+  document.getElementById(id).classList.remove('on');
+  if(id==='ma'){document.getElementById('a-pin').style.display='block';document.getElementById('a-form').style.display='none';document.getElementById('a-p').value='';}
+  if(id==='mq'){QA={};showQS(1);}
+  if(id==='mf'){document.getElementById('f-form').style.display='block';document.getElementById('f-res').style.display='none';}
+  if(id==='mg'){document.getElementById('gf-form').style.display='block';document.getElementById('gf-res').style.display='none';}
+  if(id==='mk'){document.getElementById('kd-form').style.display='block';document.getElementById('kd-res').style.display='none';}
+}
+document.querySelectorAll('.ov').forEach(function(o){o.addEventListener('click',function(e){if(e.target===o)cM(o.id);});});
+
+var QA={};
+function showQS(n){
+  document.querySelectorAll('.qstep').forEach(function(s){s.classList.remove('on');});
+  var el=document.getElementById('qs'+n);if(el)el.classList.add('on');
+  for(var i=1;i<=3;i++){var d=document.getElementById('qd'+i);if(d)d.classList.toggle('on',i<=n);}
+}
+function qa(step,val){
+  QA['s'+step]=val;
+  document.querySelectorAll('#qs'+step+' .tg').forEach(function(b){b.classList.remove('on');});
+  event.target.classList.add('on');
+  var s=step+1;
+  setTimeout(function(){if(s<=3)showQS(s);else showQR();},280);
+}
+function mkR(e,nm,sub,asin){
+  var lnk=asin?aDp(asin):'https://amazon.com/s?k='+encodeURIComponent(nm)+'&tag='+TAG;
+  return '<a href="#" onclick="return goA('+JSON.stringify(lnk)+')" class="res-card"><span class="res-ic">'+e+'<\/span><div class="res-info"><div class="res-nm">'+nm+'<\/div><div class="res-sb">'+sub+'<\/div><\/div><span style="color:var(--gold)">-><\/span><\/a>';
+}
+function showQR(){
+  showQS(4);
+  var w=QA.s1,s=QA.s2,lv=QA.s3;
+  var gs=w==='light'?'10oz-12oz':w==='med'?'12oz-14oz':'14oz-16oz';
+  var sA=s==='power'?'B0D1CK8F51':'B0CMXQ7KSK';
+  var sN=s==='power'?'Nike Hyperko 2':'Adidas Box Hog 4';
+  var h='<div style="font-family:Bebas Neue;font-size:14px;color:var(--gold);letter-spacing:2px;margin-bottom:11px">YOUR KIT<\/div>';
+  h+=mkR('&#129354;','Adidas Gloves '+gs,'USA Boxing + IBA Approved','B0F4NM14Y5');
+  h+=mkR('&#129462;','Hand Wraps 180in','4-5 wraps wrist and metacarpal','');
+  h+=mkR('&#129447;','Double Mouthguard Everlast','Upper and lower jaw protection','B00076ZDQ8');
+  h+=mkR('&#128095;',sN,'Optimized for your performance profile',sA);
+  if(lv!=='beg')h+=mkR('&#128119;','Adidas Headgear','USA Boxing Approved Premium Foam','B0B3R2V65J');
+  if(lv==='comp')h+=mkR('&#129651;','Adidas Shorts IBA','Official uniform for authorized tournaments','B081ZRYM6Z');
+  h+='<button onclick="cM(\'mq\');oM(\'mq\')" style="margin-top:10px;width:100%;background:rgba(212,160,23,.08);border:1px solid rgba(212,160,23,.2);color:var(--gold);border-radius:7px;padding:8px;font-family:Barlow Condensed;font-size:11px;cursor:pointer">RETAKE QUIZ<\/button>';
+  document.getElementById('qres').innerHTML=h;
+}
+
+var CU='lbs';
+function setU(u){
+  CU=u;
+  document.getElementById('u-lb').classList.toggle('on',u==='lbs');
+  document.getElementById('u-kg').classList.toggle('on',u==='kg');
+  document.getElementById('c-w').value='';document.getElementById('c-res').innerHTML='';
+}
+function calcR(){
+  var w=parseFloat(document.getElementById('c-w').value);
+  var ft=parseFloat(document.getElementById('c-h').value);
+  if(!w||w<40)return;
+  var lb=CU==='lbs'?w:w*2.205;
+  var inch=ft>0?ft*12:lb/3;
+  var bmi=inch>0?(lb/(inch*inch))*703:25;
+  var shirt=bmi<18.5?'XS':bmi<22?'S':bmi<25?'M':bmi<28?'L':bmi<32?'XL':'2XL';
+  var waist=Math.round(inch>0?lb/inch*4.5:32);
+  if(waist<26)waist=26;if(waist>60)waist=60;
+  var shoe=ft>0?Math.round((ft*12-50)*0.55+7):10;
+  if(shoe<5)shoe=5;if(shoe>16)shoe=16;
+  function cr(lbl,val,asin){
+    return '<div class="cr"><span style="font-size:11px;color:var(--mt)">'+lbl+'<\/span><div style="display:flex;align-items:center;gap:6px"><span class="cv">'+val+'<\/span>'+(asin?'<a href="#" onclick="return goA('+JSON.stringify(aDp(asin))+')" style="background:rgba(255,153,0,.15);color:#f90;border-radius:4px;padding:2px 6px;font-size:9px;font-weight:900">BUY<\/a>':'')+'<\/div><\/div>';
+  }
+  document.getElementById('c-res').innerHTML='<div style="background:rgba(0,0,0,.25);border-radius:9px;padding:11px;margin-top:8px">'+cr('Gloves (Boxing)',shirt+' / 12oz+','B0F4NM14Y5')+cr('Hand Wraps','180in+ Metacarpal Protection',null)+cr('Headgear',shirt,'B0B3R2V65J')+cr('Shoes','US '+shoe+'-'+(shoe+1),'B0CMXQ7KSK')+cr('Shirt Size',shirt,null)+cr('Pants Waist',waist+'in',null)+cr('Mouthguard','Double Universal','B00076ZDQ8')+'<\/div>';
+}
+
+function calcB(v){
+  v=parseInt(v);
+  document.getElementById('bnum').textContent='$'+v;
+  var tot=0,h='';
+  KIT.forEach(function(item){
+    var ok=(tot+item.p)<=v;
+    if(ok)tot+=item.p;
+    var lnk=item.a?aDp(item.a):'https://'+(DOMAINS[CTR]||'amazon.com')+'/s?k='+encodeURIComponent(item.q)+'&tag='+TAG;
+    h+='<div class="ki '+(ok?'in':'out')+'"><span style="font-size:16px;width:20px;text-align:center">&#129354;<\/span><div style="flex:1"><div style="font-size:11px;font-weight:900;color:#fff;font-family:Barlow Condensed">'+item.n+'<\/div><div style="font-size:10px;color:var(--mt)">~$'+item.p+'<\/div><\/div>'+(ok?'<a href="#" onclick="return goA('+JSON.stringify(lnk)+')" style="background:rgba(255,153,0,.15);color:#f90;border-radius:5px;padding:4px 7px;font-size:9px;font-weight:900">GO<\/a>':'')+'<span style="font-size:12px">'+(ok?'OK':'')+'<\/span><\/div>';
+  });
+  document.getElementById('bkit').innerHTML=h;
+  document.getElementById('btot').textContent=tot>0?'Estimated total: $'+tot:'Increase budget';
+}
+
+var FG='man',FSK='medium',FST='casual',FC=[];
+function setFG(g,btn){FG=g;document.querySelectorAll('#fg-m,#fg-w').forEach(function(b){b.classList.remove('on');});btn.classList.add('on');calcFS();}
+function setFS_sk(s,btn){FSK=s;document.querySelectorAll('#sk-l,#sk-m,#sk-d').forEach(function(b){b.classList.remove('on');});btn.classList.add('on');}
+function setFST(s,btn){FST=s;document.querySelectorAll('#fst-c,#fst-s,#fst-f,#fst-e').forEach(function(b){b.classList.remove('on');});btn.classList.add('on');}
+function buildColPicker(){
+  var c=document.getElementById('f-cols');c.innerHTML='';FC=[];
+  ALL_COLORS.forEach(function(col){
+    var btn=document.createElement('button');
+    btn.className='col-tg';btn.textContent=col;
+    btn.onclick=function(){
+      this.classList.toggle('on');
+      var name=col.toLowerCase().replace(/[^a-z]/g,' ').trim();
+      var idx=FC.indexOf(name);
+      if(idx>=0)FC.splice(idx,1);else FC.push(name);
+    };
+    c.appendChild(btn);
+  });
+}
+function calcFS(){
+  var w=parseFloat(document.getElementById('f-w').value);
+  var ft=parseFloat(document.getElementById('f-h').value);
+  if(!w||!ft){document.getElementById('f-sz-prev').style.display='none';return;}
+  var sz=getFSz(w,ft);
+  document.getElementById('f-sz-prev').style.display='block';
+  document.getElementById('f-sz-prev').textContent='Est. Size: '+sz.shirt+' - Shoe: US '+sz.shoe+'-'+(sz.shoe+1)+' - Waist: '+sz.waist+'in';
+}
+function getFSz(lbs,ft){
+  var inch=ft*12;
+  var bmi=(lbs/(inch*inch))*703;
+  var shirt=bmi<18.5?'XS':bmi<22?'S':bmi<25?'M':bmi<28?'L':bmi<32?'XL':'2XL';
+  var waist=Math.round(inch>0?lbs/inch*4.5:32);
+  if(waist<26)waist=26;if(waist>60)waist=60;
+  var shoe=Math.round((inch-50)*0.55+7);
+  if(shoe<5)shoe=5;if(shoe>16)shoe=16;
+  return{shirt:shirt,waist:waist,shoe:shoe,bmi:bmi};
+}
+function showF(){
+  var w=parseFloat(document.getElementById('f-w').value);
+  var ft=parseFloat(document.getElementById('f-h').value);
+  if(!w||!ft){alert('Please enter your weight and height');return;}
+  var sz=getFSz(w,ft);
+  var g=FG,sk=FSK,st=FST;
+  var gc=g==='man'?'mens':'womens';
+  var stStr=st==='sport'?'athletic workout':st==='formal'?'dress formal':st==='elegant'?'elegant luxury':'casual everyday';
+  var col=FC.length>0?FC.slice(0,2).join(' '):'black blue';
+  var parfumeQ=g==='man'?'Dior Sauvage Chanel Bleu Versace Eros men cologne luxury':'Dior Miss Dior Chanel No 5 YSL Black Opium Versace women perfume luxury';
+  var lipsQ=sk==='light'?'MAC Velvet Teddy Charlotte Tilbury Pillow Talk nude lipstick':sk==='medium'?'Fenty Beauty MAC lipstick medium skin':'MAC Diva Fenty Beauty dark lipstick';
+  var creamQ=g==='man'?'Kiehls Jack Black men face moisturizer':'La Roche Posay CeraVe Olay Regenerist face cream';
+  var cats=[
+    ['Tops and Shirts',gc+' '+col+' '+stStr+' shirt size '+sz.shirt,'Size '+sz.shirt],
+    ['Pants and Jeans',gc+' '+col+' '+stStr+' pants '+sz.waist+' waist','Waist ~'+sz.waist+'in'],
+    ['Jackets and Hoodies',gc+' '+col+' '+stStr+' jacket hoodie '+sz.shirt,'Size '+sz.shirt],
+    ['Sneakers',gc+' '+col+' '+stStr+' shoes size '+sz.shoe,'Size US '+sz.shoe+'-'+(sz.shoe+1)],
+    ['Work Shoes',g==='man'?'Skechers Hoka Work shoes non slip men size '+sz.shoe:'Hoka Dansko women work shoes size '+sz.shoe,'Comfort all day - Skechers, Hoka'],
+    ['Underwear',gc+' underwear '+sz.shirt.split('-')[0],'Size '+sz.shirt],
+    ['Luxury Perfume',parfumeQ,'Dior - Chanel - YSL - Versace - Tom Ford'],
+    ['Face Cream',creamQ,'La Roche Posay - CeraVe - Olay - Kiehls'],
+    ['Makeup and Lips',lipsQ,'MAC - Fenty Beauty - Charlotte Tilbury'],
+    ['Black Thermal Pullover',g==='man'?'Under Armour black thermal base layer men Carhartt':'women thermal undershirt black Under Armour premium','High-grade insulation - Carhartt, Under Armour'],
+    ['Bags and Backpacks',gc+' '+col+' backpack bag '+stStr,'Color: '+col],
+    ['Accessories',gc+' '+col+' sunglasses cap accessories '+stStr,'Accessories']
+  ];
+  var h='<div style="font-family:Bebas Neue;font-size:13px;color:var(--gold);letter-spacing:2px;margin-bottom:10px">SIZE: '+sz.shirt+' - SHOE: US '+sz.shoe+'<\/div>';
+  cats.forEach(function(cat){
+    var url='https://'+(DOMAINS[CTR]||'amazon.com')+'/s?k='+encodeURIComponent(cat[1])+'&tag='+TAG;
+    h+='<a href="#" onclick="return goA('+JSON.stringify(url)+')" class="res-card"><span class="res-ic">&#128085;<\/span><div class="res-info"><div class="res-nm">'+cat[0]+'<\/div><div class="res-sb">'+cat[2]+'<\/div><\/div><span style="color:var(--gold)">-><\/span><\/a>';
+    h+='<button class="wa-share" onclick="return goA('+JSON.stringify('https://wa.me/?text=Check this out: '+url)+')" >Share on WhatsApp<\/button>';
+  });
+  document.getElementById('f-res-grid').innerHTML=h;
+  document.getElementById('f-form').style.display='none';
+  document.getElementById('f-res').style.display='block';
+}
+
+function buildGFF(){
+  var lang=L==='es'?'es':'en';
+  ['who','age','gen','per','occ','bud'].forEach(function(field){
+    var el=document.getElementById('gf-'+field);
+    if(!el)return;
+    el.innerHTML='';GF_SEL[field]='';
+    var items=(GF_DATA[field][lang]||GF_DATA[field].en);
+    items.forEach(function(item){
+      var btn=document.createElement('button');
+      btn.className='tg';btn.textContent=item;
+      btn.onclick=(function(f,v,b){return function(){
+        GF_SEL[f]=v;
+        document.querySelectorAll('#gf-'+f+' .tg').forEach(function(x){x.classList.remove('on');});
+        b.classList.add('on');
+      };})(field,item,btn);
+      el.appendChild(btn);
+    });
+  });
+}
+function showGift(){
+  var who=GF_SEL.who||'Gift',gen=GF_SEL.gen||'Woman',per=GF_SEL.per||'Casual',occ=GF_SEL.occ||'Birthday',bud=GF_SEL.bud||'$100';
+  var isW=gen==='Woman'||gen==='Mujer';
+  var gc=isW?'womens':'mens';
+  var perStr=per.toLowerCase().indexOf('sport')>=0?'athletic sport':per.toLowerCase().indexOf('elegant')>=0?'luxury elegant':per.toLowerCase().indexOf('roman')>=0?'romantic gift set':'casual';
+  var gifts=[
+    ['Luxury Perfume',isW?'Dior Chanel YSL Lancome women perfume gift set luxury':'Dior Sauvage Chanel Bleu Versace mens cologne gift luxury','Dior - Chanel - YSL - Versace - Tom Ford'],
+    ['Premium Skincare',isW?'Estee Lauder La Roche Posay Olay women skincare gift set':'mens skincare grooming gift set Kiehls Jack Black','CeraVe - Olay - Clinique - Estee Lauder'],
+    [isW?'Makeup Set':'Grooming Kit',isW?'MAC Fenty Charlotte Tilbury makeup gift set lipstick':'mens grooming beard kit gift set premium','MAC - Fenty Beauty - Charlotte Tilbury'],
+    ['Jewelry',isW?'Pandora Swarovski women jewelry gift set':'mens bracelet watch silver gift','Pandora - Swarovski - Michael Kors'],
+    [isW?'Fashion Clothing':'Clothing',gc+' '+perStr+' fashion clothing gift set',perStr+' style'],
+    ['Premium Shoes',gc+' '+perStr+' shoes sneakers premium brand',isW?'Nike - Adidas - Michael Kors':'Nike - Adidas - Jordan'],
+    ['Gift Box',gc+' luxury gift set box premium '+occ.toLowerCase().replace(/ /g,'+'),'Complete ready-to-give gift'],
+    ['Accessories',isW?'womens handbag wallet accessories luxury':'mens wallet leather accessories premium','Premium brand accessories'],
+    ['Watch',gc+' watch premium '+perStr,'Fossil - Casio - Michael Kors - Seiko'],
+    ['Home Luxury',gc+' home luxury gift candle spa set premium','Relaxation and comfort set'],
+    ['Books',per.toLowerCase().indexOf('intel')>=0?'bestseller books gift amazon':'kindle e-reader gift amazon','4-5 star titles'],
+    ['Healthy Snacks',isW?'healthy snacks gift basket premium gourmet women':'healthy snacks gift basket men gourmet premium','Gourmet healthy basket']
+  ];
+  var h='<div style="font-family:Bebas Neue;font-size:13px;color:var(--gold);letter-spacing:2px;margin-bottom:10px">'+who+' - '+occ.toUpperCase()+' - '+bud+'<\/div>';
+  gifts.forEach(function(g){
+    var url='https://'+(DOMAINS[CTR]||'amazon.com')+'/s?k='+encodeURIComponent(g[1])+'&tag='+TAG;
+    h+='<a href="#" onclick="return goA('+JSON.stringify(url)+')" class="res-card"><span class="res-ic">&#127873;<\/span><div class="res-info"><div class="res-nm">'+g[0]+'<\/div><div class="res-sb">'+g[2]+'<\/div><\/div><span style="color:var(--gold)">-><\/span><\/a>';
+    h+='<button class="wa-share" onclick="return goA('+JSON.stringify('https://wa.me/?text=Perfect gift idea: '+url)+')" >Share<\/button>';
+  });
+  document.getElementById('gf-res-grid').innerHTML=h;
+  document.getElementById('gf-form').style.display='none';
+  document.getElementById('gf-res').style.display='block';
+}
+
+var KD_SEL={};
+function buildKDF(){
+  var lang=L==='es'?'es':'en';
+  ['age','gen','need'].forEach(function(field){
+    var el=document.getElementById('kd-'+field);if(!el)return;
+    el.innerHTML='';
+    if(field==='need')KD_SEL.need=[];else KD_SEL[field]='';
+    var items=KD_DATA[field][lang]||KD_DATA[field].en;
+    items.forEach(function(item){
+      var btn=document.createElement('button');
+      btn.className='tg';btn.textContent=item;
+      if(field==='need'){
+        btn.onclick=function(){
+          this.classList.toggle('on');
+          var idx=(KD_SEL.need||[]).indexOf(item);
+          if(!KD_SEL.need)KD_SEL.need=[];
+          if(idx>=0)KD_SEL.need.splice(idx,1);else KD_SEL.need.push(item);
+        };
+      }else{
+        btn.onclick=(function(f,v,b){return function(){
+          KD_SEL[f]=v;
+          document.querySelectorAll('#kd-'+f+' .tg').forEach(function(x){x.classList.remove('on');});
+          b.classList.add('on');
+        };})(field,item,btn);
+      }
+      el.appendChild(btn);
+    });
+  });
+  var tips=document.getElementById('kd-tips');
+  if(tips){tips.style.whiteSpace='pre-line';tips.textContent=KD_DATA.tips[lang]||KD_DATA.tips.en;}
+}
+function showKids(){
+  var age=KD_SEL.age||'4-6 yrs',gen=KD_SEL.gen||'Boy';
+  var isG=gen==='Girl'||gen==='Nina';
+  var gc=isG?'girls':'boys';
+  var szMap={'0-3':{c:'2T-4T',s:'5-8'},'4-6':{c:'4-6X',s:'9-13'},'7-10':{c:'7-10',s:'1-4'},'11-14':{c:'10-16',s:'4-7'}};
+  var key=age.replace(/[^0-9-]/g,'').split(' ')[0]||'4-6';
+  var sz=szMap[key]||{c:'M',s:'5'};
+  var items=[
+    ['School Clothes',gc+' school uniform clothing size '+sz.c+' quality brand','Carter - OshKosh - Champion - Nike'],
+    ['Backpack','JanSport Herschel Nike Under Armour backpack school quality '+gc,'JanSport - Under Armour - Nike - Herschel'],
+    ['School Shoes',gc+' school shoes sneakers Nike Adidas New Balance size '+sz.s,'Nike - Adidas - New Balance - Skechers Kids'],
+    ['Sneakers',gc+' sneakers Adidas Nike size '+sz.s+' kids','Adidas - Nike - New Balance'],
+    ['Lunch Box','kids insulated lunch box school BPA free quality','Premium 4-5 star insulated boxes'],
+    ['Healthy Snacks','kids healthy school snacks protein bars KIND Clif','KIND Kids - Clif Kid - RXBAR Kids'],
+    ['Greek Yogurt','Chobani Fage Greek yogurt kids healthy protein breakfast','Chobani - Fage - Clean high protein yogurt'],
+    ['GoGo Squeez Fruit','GoGo Squeez applesauce fruit pouch kids organic Peter Rabbit','GoGo Squeez - Peter Rabbit Organics'],
+    ['Oatmeal Breakfast','kids oatmeal breakfast Quaker Bob Red Mill organic whole grain','Quaker - Bob Red Mill - Clean sustained energy'],
+    ['Kids Vitamins','kids vitamins gummies Olly SmartyPants Flintstones','Olly - SmartyPants - Certified growth support'],
+    ['School Supplies',gc+' school supplies notebook pencils markers','Essential grade supplies'],
+    ['Underwear and Socks',gc+' underwear socks multipack Hanes school','Hanes - Fruit of the Loom']
+  ];
+  var h='<div style="font-family:Bebas Neue;font-size:13px;color:var(--gold);letter-spacing:2px;margin-bottom:10px">'+(isG?'GIRL':'BOY')+' - '+age+'<\/div>';
+  items.forEach(function(item){
+    var url='https://'+(DOMAINS[CTR]||'amazon.com')+'/s?k='+encodeURIComponent(item[1])+'&tag='+TAG;
+    h+='<a href="#" onclick="return goA('+JSON.stringify(url)+')" class="res-card"><span class="res-ic">&#128118;<\/span><div class="res-info"><div class="res-nm">'+item[0]+'<\/div><div class="res-sb">'+item[2]+'<\/div><\/div><span style="color:var(--gold)">-><\/span><\/a>';
+  });
+  document.getElementById('kd-res-grid').innerHTML=h;
+  document.getElementById('kd-form').style.display='none';
+  document.getElementById('kd-res').style.display='block';
+}
+
+function chkP(){
+  if(document.getElementById('a-p').value==='1967'){
+    document.getElementById('a-pin').style.display='none';
+    document.getElementById('a-form').style.display='block';
+    try{var ex=JSON.parse(localStorage.getItem('cba_pw')||'{}');if(ex.nm)document.getElementById('a-nm').value=ex.nm;if(ex.ds)document.getElementById('a-ds').value=ex.ds;if(ex.lk)document.getElementById('a-lk').value=ex.lk;}catch(e){}
+  }else{alert('Wrong PIN');}
+}
+function savePW(){
+  var nm=document.getElementById('a-nm').value.trim();
+  var ds=document.getElementById('a-ds').value.trim();
+  var lk=document.getElementById('a-lk').value.trim();
+  if(!nm||!lk){alert('Name and link required');return;}
+  localStorage.setItem('cba_pw',JSON.stringify({nm:nm,ds:ds,lk:lk}));
+  loadPW();cM('ma');
+}
+function delPW(){localStorage.removeItem('cba_pw');document.getElementById('potw').style.display='none';cM('ma');}
+function loadPW(){
+  try{
+    var d=localStorage.getItem('cba_pw');if(!d)return;
+    var p=JSON.parse(d);
+    if(p&&p.nm&&p.lk){
+      document.getElementById('pw-nm').textContent=p.nm;
+      document.getElementById('pw-ds').textContent=p.ds||'';
+      document.getElementById('pw-lk').dataset.url=p.lk;
+      document.getElementById('potw').style.display='block';
+    }
+  }catch(e){}
+}
+
+renderAll();
+buildColPicker();
+buildGFF();
+buildKDF();
+loadPW();
+calcB(150);
+
+</script>
+</body>
+</html>
